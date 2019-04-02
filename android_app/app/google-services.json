@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "72495779077",
+    "firebase_url": "https://iotproject-235401.firebaseio.com",
+    "project_id": "iotproject-235401",
+    "storage_bucket": "iotproject-235401.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:72495779077:android:64bde72c0c43da75",
+        "android_client_info": {
+          "package_name": "com.example.sergiobelda.iot_cloud_weather"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqNJ_n2R3Kc4Dq2SC8dfS3w80YZ4hG_ng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "72495779077-ei12lgn3olksua46tma4e0a627ar6lo4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
