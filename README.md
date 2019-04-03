@@ -4,6 +4,9 @@
 - ```functions```: Firebase Cloud Functions 
 - ```android_app```: Android companion app
 
-Hardware system
+## Hardware system
+
+- DHT22: Temperature and Humidity sensor
+- NodeMCU ESP8266
 
 <img src="./screenshots/sketch.png" width="720">
