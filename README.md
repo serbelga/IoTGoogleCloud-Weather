@@ -16,6 +16,8 @@
 
 ```mos gcp-iot-setup --gcp-project YOUR_PROJECT_ID --gcp-region europe-west1 --gcp-registry iot-registry```
 
+```mos put fs/init.js
+
 ```javascript
 let topic = '/devices/' + Cfg.get('device.id') + '/state';
 let dht = DHT.create(4, DHT.DHT22);
