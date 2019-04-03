@@ -3,3 +3,7 @@
 - ```firmware```: Mongoose OS development for ESP8266
 - ```functions```: Firebase Cloud Functions 
 - ```android_app```: Android companion app
+
+Hardware system
+
+<img src="./screenshots/sketch.png" width="720">
