@@ -8,5 +8,6 @@
 
 - DHT22: Temperature and Humidity sensor
 - NodeMCU ESP8266
+- Breadboard
 
 <img src="./screenshots/sketch.png" width="720">
