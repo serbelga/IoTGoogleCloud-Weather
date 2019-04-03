@@ -14,19 +14,7 @@
 
 ### Mongoose OS
 
-```gcloud auth application-default login```
-
-```gcloud projects create YOUR_PROJECT_NAME```
-
-```gcloud projects add-iam-policy-binding YOUR_PROJECT_NAME --member=serviceAccount:cloud-iot@system.gserviceaccount.com --role=roles/pubsub.publisher```
-
-```gcloud config set project YOUR_PROJECT_NAME```
-
-```gcloud pubsub topics create iot-topic```
-
-```gcloud pubsub subscriptions create --topic iot-topic iot-subscription```
-
-```gcloud iot registries create iot-registry --region europe-west1 --event-notification-config=topic=iot-topic```
+```mos gcp-iot-setup --gcp-project YOUR_PROJECT_ID --gcp-region europe-west1 --gcp-registry iot-registry```
 
 ```javascript
 let topic = '/devices/' + Cfg.get('device.id') + '/state';
