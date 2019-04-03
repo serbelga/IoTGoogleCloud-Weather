@@ -21,7 +21,8 @@ class MainActivity : AppCompatActivity() {
         val liveData = viewModel.getWeatherStateLiveData("esp8266_4CB5CD")
         liveData.observe(this, Observer<WeatherState> { weatherState ->
             if (weatherState != null) {
-                temp.text = weatherState.temperature
+                val temperature = weatherState.temperature + '°'
+                temp.text = temperature
             }
         })
     }
