@@ -28,3 +28,11 @@ Timer.set(50000, true, function() {
   print(ok, msg);
 }, null)
 ```
+
+## Android App
+
+Developed using Android Jetpack. LiveData + ViewModel & Firestore
+
+## Firebase Cloud Functions
+
+...
