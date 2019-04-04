@@ -14,7 +14,7 @@
 
 ## Architecture
 
-<img src="./screenshots/architecture.png" width="820">
+<img src="./screenshots/architecture.svg?sanitize=true" width="820">
 
 ### Mongoose OS
 
