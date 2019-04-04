@@ -12,6 +12,10 @@
 
 <img src="./screenshots/sketch.png" width="720">
 
+## Architecture
+
+<img src="./screenshots/architecture.png" width="820">
+
 ### Mongoose OS
 
 ```mos gcp-iot-setup --gcp-project YOUR_PROJECT_ID --gcp-region europe-west1 --gcp-registry iot-registry```
