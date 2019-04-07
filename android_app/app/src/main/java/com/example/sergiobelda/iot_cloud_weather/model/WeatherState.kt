@@ -1,3 +1,3 @@
 package com.example.sergiobelda.iot_cloud_weather.model
 
-class WeatherState(var temperature : String, var humidity : String)
+class WeatherState(var temperature : Double, var humidity : Double)
