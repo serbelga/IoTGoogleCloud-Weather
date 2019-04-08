@@ -4,7 +4,7 @@ Example of a weather station using Google Cloud IoT Core, Firebase Cloud Functio
 
 - ```firmware```: Mongoose OS development for ESP8266
 - ```functions```: Firebase Cloud Functions 
-- ```android_app```: Android companion app
+- ```android_app```: Android companion app. Developed using Android Jetpack.
 
 ## Hardware system
 
