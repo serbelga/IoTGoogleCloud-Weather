@@ -18,10 +18,9 @@ class WeatherStateLiveData(private val documentReference: DocumentReference) : L
     override fun onEvent(snapshot: DocumentSnapshot?, exception: FirebaseFirestoreException?) {
         if (snapshot != null && snapshot.exists()) {
             val state = snapshot.get("state") as HashMap<String, Number>
-            //val s = (Math.round(state["t"]!!.toDouble() * 100.0) / 100.0).toString()
             val weatherState = WeatherState(
-                temperature = state["t"]!!.toDouble(),
-                humidity = state["h"]!!.toDouble()
+                temperature = state["temperature"]!!.toDouble(),
+                humidity = state["humidity"]!!.toDouble()
             )
             value = weatherState
         } else if (exception != null) {

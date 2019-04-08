@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.sergiobelda.iot_cloud_weather.model.WeatherState
+import com.example.sergiobelda.iot_cloud_weather.util.FormatNumber
 import com.example.sergiobelda.iot_cloud_weather.viewmodel.WeatherStateViewModel
 import kotlinx.android.synthetic.main.fragment_detail.*
 
@@ -33,8 +34,7 @@ class DetailFragment : Fragment() {
         val liveData = viewModel.getWeatherStateLiveData("esp8266_4CB5CD")
         liveData.observe(this, Observer<WeatherState> { weatherState ->
             if (weatherState != null) {
-                val temperature = weatherState.temperature
-                temp.text = (Math.round(temperature * 100.0) / 100.0).toString() + '°'
+                temp.text = weatherState.getTemperatureString()
             }
         })
     }
