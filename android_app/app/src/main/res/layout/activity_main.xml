@@ -74,6 +74,7 @@
 
         <com.google.android.material.appbar.AppBarLayout
                 app:liftOnScroll="true"
+                app:elevation="0dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -89,10 +90,15 @@
                 android:background="@color/white"
                 android:id="@+id/backdrop"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                android:elevation="2dp"
+                android:elevation="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
         </FrameLayout>
 
-
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        </androidx.recyclerview.widget.RecyclerView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

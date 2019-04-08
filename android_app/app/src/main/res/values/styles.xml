@@ -5,7 +5,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/white</item>
         <item name="colorOnPrimary">@color/blue900</item>
-        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:statusBarColor">@color/whiteDark</item>
         <item name="android:windowLightStatusBar">true</item>
 
         <item name="colorSurface">@color/blueA200</item>
@@ -14,6 +14,7 @@
         <item name="textAppearanceHeadline3">@style/Headline3</item>
         <item name="textAppearanceHeadline5">@style/Headline5</item>
         <item name="textAppearanceHeadline6">@style/Headline6</item>
+        <item name="textAppearanceBody2">@style/Body2</item>
     </style>
 
     <style name="Headline3" parent="TextAppearance.MaterialComponents.Headline3">
@@ -25,6 +26,10 @@
     </style>
 
     <style name="Headline6" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="fontFamily">@font/libre_franklin_medium</item>
+    </style>
+
+    <style name="Body2" parent="TextAppearance.MaterialComponents.Body2">
         <item name="fontFamily">@font/libre_franklin_medium</item>
     </style>
 </resources>
