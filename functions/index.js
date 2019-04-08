@@ -8,8 +8,9 @@ const functions = require("firebase-functions"),
   admin = require("firebase-admin");
 
 const app = admin.initializeApp();
-
 const firestore = app.firestore();
+firestore.settings({ timestampsInSnapshots: true });
+
 const auth = app.auth();
 
 
