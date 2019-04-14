@@ -1,14 +1,14 @@
-package com.example.sergiobelda.iot_cloud_weather
+package com.example.sergiobelda.iot_cloud_weather.transitions
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.app.Activity
 import android.content.Context
-import android.graphics.drawable.Drawable
 import android.util.DisplayMetrics
 import android.view.View
 import android.view.animation.Interpolator
 import android.widget.ImageView
+import com.example.sergiobelda.iot_cloud_weather.R
 
 /**
  * [android.view.View.OnClickListener] used to translate the product grid sheet downward on
