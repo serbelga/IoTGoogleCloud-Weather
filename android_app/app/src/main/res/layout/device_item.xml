@@ -4,7 +4,7 @@
         android:orientation="vertical"
         style="?attr/materialCardViewStyle"
         android:padding="24dp"
-        android:layout_width="120dp"
+        android:layout_width="match_parent"
         android:layout_height="120dp">
 
     <TextView
