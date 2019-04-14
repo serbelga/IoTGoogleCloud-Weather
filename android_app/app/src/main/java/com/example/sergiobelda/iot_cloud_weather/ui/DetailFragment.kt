@@ -34,7 +34,7 @@ class DetailFragment : Fragment() {
         deviceId.text = "Device ID: $id"
         val viewModel = ViewModelProviders.of(this).get(WeatherStateViewModel::class.java)
         val liveData = viewModel.getWeatherStateLiveData("esp8266_4CB5CD")
-        liveData.observe(this, Observer<WeatherState> { weatherState ->
+        liveData.observe(this, Observer { weatherState ->
             if (weatherState != null) {
                 temp.text = weatherState.getTemperatureString()
                 humidity.text = weatherState.getHumidityString()

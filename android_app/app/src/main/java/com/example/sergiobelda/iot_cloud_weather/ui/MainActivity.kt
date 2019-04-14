@@ -4,11 +4,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.animation.AccelerateDecelerateInterpolator
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.sergiobelda.iot_cloud_weather.R
 import com.example.sergiobelda.iot_cloud_weather.adapter.DevicesAdapter
 import com.example.sergiobelda.iot_cloud_weather.model.Device
 import com.example.sergiobelda.iot_cloud_weather.transitions.NavigationIconClickListener
+import com.example.sergiobelda.iot_cloud_weather.viewmodel.DevicesViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -27,13 +30,14 @@ class MainActivity : AppCompatActivity() {
             )
         ) // Menu close icon
 
-        recyclerView.layoutManager = GridLayoutManager(this, 2)
-        var device = Device("esp8266_4CB5CD")
-        var devices = ArrayList<Device>()
-        devices.add(device)
-        recyclerView.adapter = DevicesAdapter(devices) {
-            Log.d("Id: ", it.id)
-        }
+        val viewModel = ViewModelProviders.of(this).get(DevicesViewModel::class.java)
+        val liveData = viewModel.getDevices()
+        liveData.observe(this, Observer { devices ->
+            recyclerView.layoutManager = GridLayoutManager(this, 2)
+            recyclerView.adapter = DevicesAdapter(devices) {
+                    device -> Log.d("Id: ", device.id)
+            }
+        })
         supportFragmentManager.beginTransaction().add(
             R.id.backdrop,
             DetailFragment()
