@@ -20,7 +20,9 @@ class WeatherStateLiveData(private val documentReference: DocumentReference) : L
             val state = snapshot.get("state") as HashMap<String, Number>
             val weatherState = WeatherState(
                 temperature = state["temperature"]!!.toDouble(),
-                humidity = state["humidity"]!!.toDouble()
+                humidity = state["humidity"]!!.toDouble(),
+                lastConnection = "21/12/2018",
+                online = true
             )
             value = weatherState
         } else if (exception != null) {

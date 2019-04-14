@@ -5,6 +5,7 @@
     <color name="colorAccent">#D81B60</color>
     <color name="blueA200">#448AFF</color>
     <color name="blue900">#0D47A1</color>
+    <color name="blue900mediumEmphasis">#990D47A1</color>
     <color name="mediumEmphasis">#99000000</color>
 
     <color name="blueDark">#0031ca</color>

@@ -2,11 +2,11 @@ package com.example.sergiobelda.iot_cloud_weather.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.example.sergiobelda.iot_cloud_weather.livedata.WeatherStateLiveData
-import com.example.sergiobelda.iot_cloud_weather.repository.FirestoreWeatherStateRepository
-import com.example.sergiobelda.iot_cloud_weather.repository.WeatherStateRepository
+import com.example.sergiobelda.iot_cloud_weather.repository.FirestoreWeatherRepository
+import com.example.sergiobelda.iot_cloud_weather.repository.WeatherRepository
 
 class WeatherStateViewModel : ViewModel() {
-    private val repository: WeatherStateRepository = FirestoreWeatherStateRepository()
+    private val repository: WeatherRepository = FirestoreWeatherRepository()
     fun getWeatherStateLiveData(deviceId: String): WeatherStateLiveData {
         val liveData = repository.getWeatherStateLiveData(deviceId)
         return liveData
