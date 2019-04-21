@@ -9,7 +9,8 @@
 
 
     <TextView
-            style="?attr/textAppearanceHeadline6"
+            android:text="Device"
+            style="?attr/textAppearanceBody2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/deviceId"
@@ -24,6 +25,7 @@
             app:layout_constraintVertical_bias="0.0"/>
 
     <androidx.appcompat.widget.LinearLayoutCompat
+            android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="32dp"
             android:layout_marginBottom="8dp"
@@ -38,28 +40,30 @@
             app:layout_constraintVertical_bias="1.0"
             android:id="@+id/linearLayoutCompat">
 
+        <ImageView
+                android:src="@drawable/ic_temperature"
+                android:layout_width="24dp"
+                android:layout_height="30dp"/>
+
         <TextView
                 style="?textAppearanceHeadline5"
                 android:id="@+id/temp"
                 android:text="-"
+                android:layout_marginStart="8dp"
                 android:textColor="?attr/colorOnPrimary"
                 android:layout_marginEnd="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
-        <TextView
-                android:textColor="?attr/colorOnPrimaryEmphasisMedium"
-                android:text="Humidity"
-                style="@style/Headline5"
-                android:layout_marginStart="16dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView2"/>
+        <ImageView
+                android:src="@drawable/ic_humidity"
+                android:layout_width="24dp"
+                android:layout_height="24dp"/>
 
         <TextView
                 style="@style/Headline5"
                 android:textColor="?attr/colorOnPrimary"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/humidity"/>

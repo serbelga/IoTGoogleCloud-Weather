@@ -8,6 +8,7 @@
         android:layout_height="120dp">
 
     <TextView
+            style="?attr/textAppearanceHeadline6"
             android:textColor="?attr/colorOnSurface"
             android:id="@+id/itemId"
             android:layout_width="wrap_content"
