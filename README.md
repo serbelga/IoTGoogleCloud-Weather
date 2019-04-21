@@ -42,7 +42,11 @@ Timer.set(50000, true, function() {
 
 ## Android App
 
-Developed using Android Jetpack. LiveData + ViewModel & Firestore
+Developed using Android Jetpack. Firebase & Jetpack
+- [x] LiveData
+- [x] ViewModel
+- [x] Android KTX
+- [x] Animation & Transition
 
 ## Firebase Cloud Functions
 
