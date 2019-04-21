@@ -48,6 +48,8 @@ Developed using Android Jetpack. Firebase & Jetpack
 - [x] Android KTX
 - [x] Animation & Transition
 
+<img src="./screenshots/app.png" width="360">
+
 ## Firebase Cloud Functions
 
 ...
