@@ -42,7 +42,7 @@ exports.functionArray = functions.pubsub.topic('iot-topic').onPublish(async (mes
       var data = doc.data()
       if ("states" in data)
         list = data.states;
-      if (list.length > 20) {
+      if (list.length > 19) {
         list = list.slice(1)
       }
       list.push({'state': message.json});
