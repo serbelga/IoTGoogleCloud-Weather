@@ -31,8 +31,8 @@ class MainActivity : AppCompatActivity() {
         ) // Menu close icon
 
         val viewModel = ViewModelProviders.of(this).get(DevicesViewModel::class.java)
-        val liveData = viewModel.getDevices()
-        liveData.observe(this, Observer { devices ->
+        //val liveData = viewModel.getDevices()
+        viewModel.devices.observe(this, Observer { devices ->
             recyclerView.layoutManager = GridLayoutManager(this, 2)
             recyclerView.adapter = DevicesAdapter(devices) {
                     device -> Log.d("Id: ", device.id)

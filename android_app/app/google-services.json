@@ -13,7 +13,20 @@
           "package_name": "com.example.sergiobelda.iot_cloud_weather"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "72495779077-d27vn5pngnhi3vdvvl80cs8kik3ei2mp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sergiobelda.iot_cloud_weather",
+            "certificate_hash": "583415512b0b42bd61f7ec17eb42de015766c1f0"
+          }
+        },
+        {
+          "client_id": "72495779077-ei12lgn3olksua46tma4e0a627ar6lo4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCqNJ_n2R3Kc4Dq2SC8dfS3w80YZ4hG_ng"

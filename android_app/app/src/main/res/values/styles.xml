@@ -20,6 +20,19 @@
         <item name="materialCardViewStyle">@style/AppCardView</item>
     </style>
 
+    <style name="AppThemeDark" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorOnPrimary">@color/blue900</item>
+        <item name="colorOnPrimaryEmphasisMedium">@color/blue900mediumEmphasis</item>
+        <item name="colorSurface">@color/black</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="textAppearanceHeadline3">@style/Headline3</item>
+        <item name="textAppearanceHeadline5">@style/Headline5</item>
+        <item name="textAppearanceHeadline6">@style/Headline6</item>
+        <item name="textAppearanceBody2">@style/Body2</item>
+        <item name="materialCardViewStyle">@style/AppCardView</item>
+    </style>
+
+
     <style name="Headline3" parent="TextAppearance.MaterialComponents.Headline3">
         <item name="fontFamily">@font/libre_franklin_medium</item>
     </style>

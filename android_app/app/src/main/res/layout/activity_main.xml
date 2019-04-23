@@ -22,7 +22,6 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <FrameLayout
-                android:background="@color/white"
                 android:id="@+id/backdrop"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 android:elevation="4dp"

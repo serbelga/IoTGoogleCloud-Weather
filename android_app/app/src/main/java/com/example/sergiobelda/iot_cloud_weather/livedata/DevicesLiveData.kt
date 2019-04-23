@@ -16,7 +16,7 @@ class DevicesLiveData(private val collectionReference: CollectionReference) : Li
     }
 
     override fun onEvent(snapshot: QuerySnapshot?, exception: FirebaseFirestoreException?) {
-        var devices = ArrayList<Device>()
+        val devices = ArrayList<Device>()
         if (snapshot != null) {
             for (document in snapshot.documents) {
                 devices.add(Device(document.id))
