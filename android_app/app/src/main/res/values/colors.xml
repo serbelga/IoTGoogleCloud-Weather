@@ -26,4 +26,7 @@
     <color name="pink">#FEDBD0</color>
     <color name="pink50">#FEEAE6</color>
     <color name="brown">#442C2E</color>
+
+    <color name="blueGray600">#546e7a</color>
+    <color name="blueGray600Dark">#29434e</color>
 </resources>
