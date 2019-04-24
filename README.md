@@ -1,5 +1,7 @@
 # IoT Google Cloud Weather Station
 
+<img src="./android_app/assets/device.png" width="360">
+
 Example of a weather station using Google Cloud IoT Core, Firebase Cloud Functions, Firestore and AndroidX
 
 - ```firmware```: Mongoose OS development for ESP8266
@@ -47,8 +49,6 @@ Developed using Android Jetpack. Firebase & Jetpack
 - [x] ViewModel
 - [x] Android KTX
 - [x] Animation & Transition
-
-<img src="./android_app/assets/device.png" width="360">
 
 ## Firebase Cloud Functions
 
