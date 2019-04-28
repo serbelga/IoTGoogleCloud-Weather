@@ -11,20 +11,14 @@ const app = admin.initializeApp();
 const firestore = app.firestore();
 var num = 0;
 
-
 firestore.settings({ timestampsInSnapshots: true });
 
 const auth = app.auth();
 
-
-exports.function = functions.pubsub.topic('iot-topic').onPublish(async (message) => {
+exports.deviceState = functions.pubsub.topic('iot-topic').onPublish(async (message) => {
     const deviceId = message.attributes.deviceId;
-    console.log(message)
-  
-    // Write the device state into firestore
     const deviceRef = firestore.doc(`device-configs/${deviceId}`);
     try {
-      // Ensure the device is also marked as 'online' when state is updated
       await deviceRef.update({ 'state': message.json, 'online': true, 'timestamp' : admin.firestore.Timestamp.now() });
       console.log(`State updated for ${deviceId}`);
     } catch (error) {
@@ -32,7 +26,7 @@ exports.function = functions.pubsub.topic('iot-topic').onPublish(async (message)
     }
 });
 
-exports.functionArray = functions.pubsub.topic('iot-topic').onPublish(async (message) => {
+exports.deviceStateArray = functions.pubsub.topic('iot-topic').onPublish(async (message) => {
   const deviceId = message.attributes.deviceId;
   console.log(message)
   const deviceRef = firestore.doc(`device-configs/${deviceId}`);
@@ -48,7 +42,7 @@ exports.functionArray = functions.pubsub.topic('iot-topic').onPublish(async (mes
       list.push({'state': message.json});
       deviceRef.update({
         states: list
-      })
+      });
       return null;  
     }).catch((error) => {
         console.log("Error getting document:", error);
@@ -58,8 +52,7 @@ exports.functionArray = functions.pubsub.topic('iot-topic').onPublish(async (mes
   }
 });
 
-
-exports.state = functions.pubsub.topic('online-state').onPublish(async (message) => {
+exports.deviceOnlineState = functions.pubsub.topic('online-state').onPublish(async (message) => {
   const logEntry = JSON.parse(Buffer.from(message.data, 'base64').toString());
   const deviceId = logEntry.labels.device_id;
 
