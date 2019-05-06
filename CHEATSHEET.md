@@ -4,7 +4,7 @@
 
 Mongoose OS pub MQTT -> /devices/‘device.id’/state
 
-### Sub -> Modify config of device
+### Sub -> Modify config of device
 
 Mongoose OS sub MQTT <- /devices/‘device.id’/config
 
@@ -13,8 +13,8 @@ Mongoose OS sub MQTT <- /devices/‘device.id’/config
 Document device-config/‘device-id’/ 
 ```json
 {
-online: true,
-state: …
+  online: true,
+  state: {}
 }
 ```
 
@@ -28,10 +28,9 @@ deviceId = message.attributes.deviceId;
 })
 ```
 
-### Sub -> Modify config of device
+### Sub -> Modify config of device
 
 ```javascript
-functions.firestore.document(‘’).onWrite(async (change, context) => {
-
+  functions.firestore.document(‘’).onWrite(async (change, context) => {
 })
 ```
