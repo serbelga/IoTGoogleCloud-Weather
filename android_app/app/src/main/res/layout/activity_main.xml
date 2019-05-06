@@ -14,6 +14,7 @@
                 android:layout_height="wrap_content">
 
                 <androidx.appcompat.widget.Toolbar
+                        app:menu="@menu/main_menu"
                         android:id="@+id/toolbar"
                         app:navigationIcon="@drawable/ic_menu_black_24dp"
                         android:layout_width="match_parent"

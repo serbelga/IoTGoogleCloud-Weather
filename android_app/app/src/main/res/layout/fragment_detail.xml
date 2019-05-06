@@ -8,7 +8,6 @@
         android:background="?attr/colorSurface"
         tools:context=".ui.DetailFragment">
 
-
     <TextView
             android:text="Device"
             style="?attr/textAppearanceBody2"

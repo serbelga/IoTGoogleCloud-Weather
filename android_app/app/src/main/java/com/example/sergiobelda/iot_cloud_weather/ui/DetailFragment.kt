@@ -68,7 +68,6 @@ class DetailFragment : Fragment() {
     }
 
     private fun setWeatherState() {
-        //val liveData = viewModel.getWeatherState("esp8266_4CB5CD")
         viewModel.getWeatherState("esp8266_4CB5CD").observe(this, Observer { weatherState ->
             if (weatherState != null) {
                 val online = if (weatherState.online) "Connected" else "Disconnected"
