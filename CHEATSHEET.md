@@ -11,14 +11,15 @@ Mongoose OS sub MQTT <- /devices/‘device.id’/config
 ## Firestore
 
 Document device-config/‘device-id’/ 
-```json
+
+```javascript
 {
   online: true,
   state: {}
 }
 ```
 
-## Firebase Cloud Functions
+## Firebase Cloud Functions
 
 ### Pub
 
