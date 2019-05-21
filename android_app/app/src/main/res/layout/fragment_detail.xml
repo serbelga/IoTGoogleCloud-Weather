@@ -140,11 +140,12 @@
                     android:layout_height="300dp"
                     android:id="@+id/graph" />
 
+            <!--
             <com.jjoe64.graphview.GraphView
                     android:layout_marginTop="24dp"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
-                    android:id="@+id/graph1" />
+                    android:id="@+id/graph1" />-->
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
