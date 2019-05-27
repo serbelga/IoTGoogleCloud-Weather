@@ -9,7 +9,7 @@
         tools:context=".ui.DetailFragment">
 
     <TextView
-            android:text="Device"
+            android:text="@string/device"
             style="?attr/textAppearanceBody2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -129,7 +129,7 @@
                     android:layout_margin="16dp"
                     style="@style/Body2"
                     android:textAlignment="center"
-                    android:text="Temperature"
+                    android:text="@string/temperature"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
