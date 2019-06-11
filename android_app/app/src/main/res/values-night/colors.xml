@@ -34,8 +34,9 @@
     <color name="DarkGrey">#121212</color>
 
 
-    <color name="colorPrimary">@color/redDark</color>
-    <color name="colorPrimaryDark">@color/redDark</color>
 
-    <color name="colorOnSurface">@color/blueA200</color>
+    <color name="colorPrimary">@color/blueDark</color>
+    <color name="colorPrimaryDark">@color/blueDark</color>
+
+    <color name="colorOnSurface">@color/blueDark</color>
 </resources>
