@@ -29,4 +29,7 @@
 
     <color name="blueGray600">#546e7a</color>
     <color name="blueGray600Dark">#29434e</color>
+
+
+    <color name="DarkGrey">#121212</color>
 </resources>
