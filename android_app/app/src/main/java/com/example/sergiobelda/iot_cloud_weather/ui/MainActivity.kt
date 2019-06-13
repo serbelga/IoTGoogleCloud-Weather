@@ -22,18 +22,22 @@ import com.example.sergiobelda.iot_cloud_weather.transitions.NavigationIconClick
 import com.example.sergiobelda.iot_cloud_weather.viewmodel.DevicesViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.toolbar
+import kotlinx.android.synthetic.main.activity_main_new.*
 
 class MainActivity : AppCompatActivity() {
+    private var expanded = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //delegate.localNightMode = MODE_NIGHT_NO
 
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main_new)
 
         // Setup Toolbar to handle Backdrop events and Switch Theme
         setupToolbar()
 
+        /*
         val viewModel = ViewModelProviders.of(this).get(DevicesViewModel::class.java)
         viewModel.devices.observe(this, Observer { devices ->
             recyclerView.layoutManager = GridLayoutManager(this, 2) as RecyclerView.LayoutManager?
@@ -44,7 +48,7 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager.commit {
             add(R.id.backdrop, DetailFragment())
-        }
+        }*/
     }
 
     private fun setupToolbar() {
@@ -57,14 +61,23 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
-        toolbar.setNavigationOnClickListener(
+
+        toolbar.setNavigationOnClickListener {
+            if (expanded) motionLayout.transitionToStart()
+            else motionLayout.transitionToEnd()
+            expanded = !expanded
+        }
+
+
+            /*
             NavigationIconClickListener(
                 this,
                 backdrop,
                 AccelerateDecelerateInterpolator(),
                 R.drawable.ic_menu_black_24dp, // Menu open icon
                 R.drawable.ic_close_black_24dp
-            )
-        ) // Menu close icon
+            )*/
+        // Menu close icon
+
     }
 }
