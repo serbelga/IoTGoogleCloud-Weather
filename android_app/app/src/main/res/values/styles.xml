@@ -4,7 +4,6 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
 
-        <item name="toolbarStyle">@style/Widget.MaterialComponents.Toolbar.Surface</item>
         <item name="textAppearanceHeadline3">@style/Headline3</item>
         <item name="textAppearanceHeadline5">@style/Headline5</item>
         <item name="textAppearanceHeadline6">@style/Headline6</item>
@@ -30,9 +29,5 @@
 
     <style name="MyCardView" parent="Widget.MaterialComponents.CardView">
         <item name="cardCornerRadius">12dp</item>
-    </style>
-
-    <style name="MyBackdropView" parent="ShapeAppearance.MaterialComponents.MediumComponent">
-        <item name="cardCornerRadius">0dp</item>
     </style>
 </resources>

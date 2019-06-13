@@ -49,6 +49,10 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.commit {
             add(R.id.backdrop, DetailFragment())
         }*/
+
+        supportFragmentManager.commit {
+            add(R.id.backdrop, DetailFragment())
+        }
     }
 
     private fun setupToolbar() {
@@ -63,6 +67,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         toolbar.setNavigationOnClickListener {
+            if (expanded) motionLayout.transitionToStart()
+            else motionLayout.transitionToEnd()
+            expanded = !expanded
+        }
+
+        open.setOnClickListener {
             if (expanded) motionLayout.transitionToStart()
             else motionLayout.transitionToEnd()
             expanded = !expanded

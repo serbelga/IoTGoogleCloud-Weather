@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_height="match_parent"
+<androidx.constraintlayout.motion.widget.MotionLayout
+        xmlns:tools="http://schemas.android.com/tools" android:layout_height="match_parent"
         android:layout_width="match_parent"
+        android:id="@+id/motionLayout"
+        app:layoutDescription="@xml/motion_scene"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -9,10 +11,9 @@
             android:id="@+id/appbarlayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fitsSystemWindows="true"
-            app:liftOnScroll="true">
+            android:fitsSystemWindows="true">
 
-        <androidx.appcompat.widget.Toolbar
+        <com.google.android.material.appbar.MaterialToolbar
                 app:menu="@menu/main_menu"
                 android:id="@+id/toolbar"
                 app:navigationIcon="@drawable/ic_menu_black_24dp"
@@ -20,36 +21,13 @@
                 android:layout_height="wrap_content">
 
             <Button
+                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                     android:id="@+id/open"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="open"/>
-
-            <Button
-                    android:id="@+id/close"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="close"/>
-        </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.MaterialToolbar>
     </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.constraintlayout.motion.widget.MotionLayout
-            android:id="@+id/motionLayout"
-            app:layoutDescription="@xml/motion_scene"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <FrameLayout
-                android:elevation="0dp"
-                android:background="@color/colorPrimary"
-                android:id="@+id/topPanel"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
-        </FrameLayout>
 
 
         <androidx.core.widget.NestedScrollView
@@ -57,11 +35,17 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="0dp"
-                app:layout_constraintTop_toBottomOf="@+id/topPanel"
+                app:layout_constraintTop_toBottomOf="@+id/appbarlayout"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 
+
+            <FrameLayout
+                    android:id="@+id/backdrop"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+            </FrameLayout>
+
         </androidx.core.widget.NestedScrollView>
-    </androidx.constraintlayout.motion.widget.MotionLayout>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>
