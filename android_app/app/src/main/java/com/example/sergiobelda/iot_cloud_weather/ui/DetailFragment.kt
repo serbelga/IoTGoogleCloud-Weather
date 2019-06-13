@@ -64,7 +64,7 @@ class DetailFragment : Fragment() {
         viewModel.getWeatherState("esp8266_4CB5CD").observe(this, Observer { weatherState ->
             if (weatherState != null) {
                 val online = if (weatherState.online) "Connected" else "Disconnected"
-                val color = if (weatherState.online) R.color.teal else R.color.redDark
+                val color = if (weatherState.online) R.color.colorOk else R.color.colorError
                 val spannable = SpannableString("${online} - Last update: ${weatherState.lastConnection}")
                 spannable.setSpan(
                     ForegroundColorSpan(ContextCompat.getColor(context!!, color)),

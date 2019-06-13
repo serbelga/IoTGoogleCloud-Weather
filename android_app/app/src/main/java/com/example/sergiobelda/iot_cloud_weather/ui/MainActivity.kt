@@ -73,8 +73,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         open.setOnClickListener {
-            if (expanded) motionLayout.transitionToStart()
-            else motionLayout.transitionToEnd()
+            if (expanded) {
+                motionLayout.transitionToStart()
+            } else {
+                motionLayout.transitionToEnd()
+            }
             expanded = !expanded
         }
 

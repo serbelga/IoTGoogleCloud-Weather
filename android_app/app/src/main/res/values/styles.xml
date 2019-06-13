@@ -4,6 +4,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
 
+        <item name="colorError">?attr/colorError</item>
+
         <item name="textAppearanceHeadline3">@style/Headline3</item>
         <item name="textAppearanceHeadline5">@style/Headline5</item>
         <item name="textAppearanceHeadline6">@style/Headline6</item>

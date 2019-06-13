@@ -21,11 +21,14 @@
                 android:layout_height="wrap_content">
 
             <Button
-                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                    android:drawableTint="?attr/colorControlNormal"
+                    app:icon="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:textColor="?attr/colorControlNormal"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:id="@+id/open"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="open"/>
+                    android:text="ESP8266_4CB5CD"/>
         </com.google.android.material.appbar.MaterialToolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
