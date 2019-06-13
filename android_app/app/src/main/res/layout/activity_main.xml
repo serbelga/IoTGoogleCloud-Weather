@@ -38,7 +38,7 @@
 
                 <TextView
                         style="?attr/textAppearanceHeadline6"
-                        android:text="Devices"
+                        android:text="@string/devices"
                         android:textAlignment="center"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>

@@ -5,4 +5,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="temperature">Temperature</string>
     <string name="device">Device</string>
+    <string name="devices">Devices</string>
 </resources>
