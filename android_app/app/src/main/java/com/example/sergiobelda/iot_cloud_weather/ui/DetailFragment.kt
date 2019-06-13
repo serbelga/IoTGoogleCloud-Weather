@@ -1,6 +1,7 @@
 package com.example.sergiobelda.iot_cloud_weather.ui
 
 
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
@@ -55,6 +56,7 @@ class DetailFragment : Fragment() {
                 arrayDataPoint[i] = DataPoint(i.toDouble(), state.get("temperature").toString().toDouble())
             }
             val series = LineGraphSeries<DataPoint>(arrayDataPoint)
+            series.color = ContextCompat.getColor(context!!, R.color.colorPrimaryDark)
             graph.removeAllSeries()
             graph.addSeries(series)
         })
