@@ -21,7 +21,6 @@ import com.example.sergiobelda.iot_cloud_weather.adapter.DevicesAdapter
 import com.example.sergiobelda.iot_cloud_weather.transitions.NavigationIconClickListener
 import com.example.sergiobelda.iot_cloud_weather.viewmodel.DevicesViewModel
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.toolbar
 import kotlinx.android.synthetic.main.activity_main_new.*
 
@@ -37,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         // Setup Toolbar to handle Backdrop events and Switch Theme
         setupToolbar()
 
-        /*
+
         val viewModel = ViewModelProviders.of(this).get(DevicesViewModel::class.java)
         viewModel.devices.observe(this, Observer { devices ->
             recyclerView.layoutManager = GridLayoutManager(this, 2) as RecyclerView.LayoutManager?
@@ -46,9 +45,6 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        supportFragmentManager.commit {
-            add(R.id.backdrop, DetailFragment())
-        }*/
 
         supportFragmentManager.commit {
             add(R.id.backdrop, DetailFragment())
@@ -64,12 +60,6 @@ class MainActivity : AppCompatActivity() {
                 Configuration.UI_MODE_NIGHT_YES -> setDefaultNightMode(MODE_NIGHT_NO)
             }
             true
-        }
-
-        toolbar.setNavigationOnClickListener {
-            if (expanded) motionLayout.transitionToStart()
-            else motionLayout.transitionToEnd()
-            expanded = !expanded
         }
 
         open.setOnClickListener {

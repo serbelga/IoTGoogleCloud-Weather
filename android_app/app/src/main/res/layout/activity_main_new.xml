@@ -10,13 +10,11 @@
     <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbarlayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fitsSystemWindows="true">
+            android:layout_height="?attr/actionBarSize">
 
         <com.google.android.material.appbar.MaterialToolbar
                 app:menu="@menu/main_menu"
                 android:id="@+id/toolbar"
-                app:navigationIcon="@drawable/ic_menu_black_24dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -30,6 +28,12 @@
                     android:layout_height="wrap_content"
                     android:text="ESP8266_4CB5CD"/>
         </com.google.android.material.appbar.MaterialToolbar>
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+        </androidx.recyclerview.widget.RecyclerView>
     </com.google.android.material.appbar.AppBarLayout>
 
 
