@@ -1,6 +1,5 @@
 package com.example.sergiobelda.iot_cloud_weather.ui
 
-
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
@@ -37,7 +36,6 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val id = "esp8266_4CB5CD"
-        deviceId.text = "Device ID: $id"
         viewModel = ViewModelProviders.of(this).get(WeatherStateViewModel::class.java)
 
         graph.viewport.isXAxisBoundsManual = true
@@ -55,6 +53,7 @@ class DetailFragment : Fragment() {
                 arrayDataPoint[i] = DataPoint(i.toDouble(), state.get("temperature").toString().toDouble())
             }
             val series = LineGraphSeries<DataPoint>(arrayDataPoint)
+            series.color = ContextCompat.getColor(context!!, R.color.colorPrimaryDark)
             graph.removeAllSeries()
             graph.addSeries(series)
         })
@@ -64,7 +63,7 @@ class DetailFragment : Fragment() {
         viewModel.getWeatherState("esp8266_4CB5CD").observe(this, Observer { weatherState ->
             if (weatherState != null) {
                 val online = if (weatherState.online) "Connected" else "Disconnected"
-                val color = if (weatherState.online) R.color.teal else R.color.redDark
+                val color = if (weatherState.online) R.color.colorOk else R.color.colorError
                 val spannable = SpannableString("${online} - Last update: ${weatherState.lastConnection}")
                 spannable.setSpan(
                     ForegroundColorSpan(ContextCompat.getColor(context!!, color)),
