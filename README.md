@@ -1,6 +1,6 @@
 # IoT Google Cloud Weather Station
 
-<img src="./android_app/assets/device.png" width="360">
+<img src="./android_app/assets/device.png" width="720">
 
 Example of a weather station using Google Cloud IoT Core, Firebase Cloud Functions, Firestore and AndroidX
 
