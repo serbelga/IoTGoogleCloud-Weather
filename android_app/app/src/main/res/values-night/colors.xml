@@ -1,42 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="blueA200">#448AFF</color>
-    <color name="blue900">#0D47A1</color>
-    <color name="blue900mediumEmphasis">#990D47A1</color>
-    <color name="mediumEmphasis">#99000000</color>
-    <color name="gray">#8b8b8b</color>
 
-    <color name="blueDark">#0031ca</color>
-    <color name="yellow">#f9a825</color>
-    <color name="yellowDark">#c17900</color>
-    <color name="red">#d50000</color>
-    <color name="redDark">#9b0000</color>
-    <color name="purple">#6722f9</color>
-    <color name="purpleDark">#1300c5</color>
-    <color name="white">#fff</color>
-    <color name="whiteDark">#f5f5f5</color>
-    <color name="black200">#dedede</color>
-    <color name="black">#000</color>
-    <color name="teal">#00bfa5</color>
-    <color name="tealDark">#008e76</color>
-    <color name="blue">#0031ca</color>
-    <color name="indigo400">#5c6bc0</color>
-    <color name="indigo700">#303f9f</color>
-    <color name="pink">#FEDBD0</color>
-    <color name="pink50">#FEEAE6</color>
-    <color name="brown">#442C2E</color>
+    <!-- Theme Attributes -->
 
-    <color name="blueGray600">#546e7a</color>
-    <color name="blueGray600Dark">#29434e</color>
+    <color name="colorPrimary">@color/amber200</color>
+    <color name="colorPrimaryDark">@color/amber200Dark</color>
+    <color name="colorError">@color/red300</color>
+    <color name="colorOk">@color/teal200</color>
 
-
-    <color name="DarkGrey">#121212</color>
-
-
-
-    <color name="colorPrimary">@color/blueDark</color>
-    <color name="colorPrimaryDark">@color/blueDark</color>
-
-    <color name="colorOnSurface">@color/blueDark</color>
+    <color name="borderColorOnSurface">#1FFFFFFF</color>
 </resources>

@@ -10,9 +10,4 @@ class DevicesViewModel : ViewModel() {
     private val repository: WeatherRepository = FirestoreWeatherRepository()
 
     val devices = repository.getDevices()
-
-    /*
-    fun getDevices(): DevicesLiveData {
-        return repository.getDevices()
-    }*/
 }

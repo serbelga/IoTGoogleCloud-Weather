@@ -1,11 +1,9 @@
 package com.example.sergiobelda.iot_cloud_weather.ui
 
-
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,18 +11,12 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-
 import com.example.sergiobelda.iot_cloud_weather.R
 import com.example.sergiobelda.iot_cloud_weather.viewmodel.WeatherStateViewModel
-import com.google.gson.JsonObject
-import kotlinx.android.synthetic.main.fragment_detail.*
-import com.jjoe64.graphview.series.LineGraphSeries
 import com.jjoe64.graphview.series.DataPoint
-import kotlinx.android.synthetic.main.fragment_detail.view.*
+import com.jjoe64.graphview.series.LineGraphSeries
+import kotlinx.android.synthetic.main.fragment_detail.*
 import org.json.JSONObject
-
-
-
 
 /**
  * A simple [Fragment] subclass.
@@ -44,7 +36,6 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val id = "esp8266_4CB5CD"
-        deviceId.text = "Device ID: $id"
         viewModel = ViewModelProviders.of(this).get(WeatherStateViewModel::class.java)
 
         graph.viewport.isXAxisBoundsManual = true
@@ -62,6 +53,7 @@ class DetailFragment : Fragment() {
                 arrayDataPoint[i] = DataPoint(i.toDouble(), state.get("temperature").toString().toDouble())
             }
             val series = LineGraphSeries<DataPoint>(arrayDataPoint)
+            series.color = ContextCompat.getColor(context!!, R.color.colorPrimaryDark)
             graph.removeAllSeries()
             graph.addSeries(series)
         })
@@ -71,7 +63,7 @@ class DetailFragment : Fragment() {
         viewModel.getWeatherState("esp8266_4CB5CD").observe(this, Observer { weatherState ->
             if (weatherState != null) {
                 val online = if (weatherState.online) "Connected" else "Disconnected"
-                val color = if (weatherState.online) R.color.teal else R.color.redDark
+                val color = if (weatherState.online) R.color.colorOk else R.color.colorError
                 val spannable = SpannableString("${online} - Last update: ${weatherState.lastConnection}")
                 spannable.setSpan(
                     ForegroundColorSpan(ContextCompat.getColor(context!!, color)),
