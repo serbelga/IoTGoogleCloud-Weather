@@ -1,7 +1,5 @@
 package com.example.sergiobelda.iot_cloud_weather.ui
 
-
-import android.graphics.Color
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
@@ -38,7 +36,6 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val id = "esp8266_4CB5CD"
-        deviceId.text = "Device ID: $id"
         viewModel = ViewModelProviders.of(this).get(WeatherStateViewModel::class.java)
 
         graph.viewport.isXAxisBoundsManual = true

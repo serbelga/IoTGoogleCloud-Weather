@@ -1,28 +1,18 @@
 package com.example.sergiobelda.iot_cloud_weather.ui
 
-import android.content.Context
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
-import android.view.animation.AccelerateDecelerateInterpolator
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.AppCompatDelegate.*
 import androidx.fragment.app.commit
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sergiobelda.iot_cloud_weather.R
 import com.example.sergiobelda.iot_cloud_weather.adapter.DevicesAdapter
-import com.example.sergiobelda.iot_cloud_weather.transitions.NavigationIconClickListener
 import com.example.sergiobelda.iot_cloud_weather.viewmodel.DevicesViewModel
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_main.toolbar
-import kotlinx.android.synthetic.main.activity_main_new.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private var expanded = false
@@ -31,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         //delegate.localNightMode = MODE_NIGHT_NO
 
-        setContentView(R.layout.activity_main_new)
+        setContentView(R.layout.activity_main)
 
         // Setup Toolbar to handle Backdrop events and Switch Theme
         setupToolbar()
@@ -39,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
         val viewModel = ViewModelProviders.of(this).get(DevicesViewModel::class.java)
         viewModel.devices.observe(this, Observer { devices ->
-            recyclerView.layoutManager = GridLayoutManager(this, 2) as RecyclerView.LayoutManager?
+            recyclerView.layoutManager = LinearLayoutManager(this)
             recyclerView.adapter = DevicesAdapter(devices) {
                     device -> Log.d("Id: ", device.id)
             }

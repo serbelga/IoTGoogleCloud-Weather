@@ -7,98 +7,82 @@
         android:layout_height="match_parent"
         tools:context=".ui.DetailFragment">
 
-        <TextView
-                android:text="@string/device"
-                style="?attr/textAppearanceBody2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/deviceId"
-                android:layout_marginTop="32dp"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginStart="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintVertical_bias="0.0"/>
+    <androidx.appcompat.widget.LinearLayoutCompat
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"
+            app:layout_constraintHorizontal_bias="0.498"
+            android:id="@+id/linearLayoutCompat"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.106">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-                android:gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="32dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toTopOf="@+id/guideline"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/deviceId"
-                app:layout_constraintHorizontal_bias="0.497"
-                app:layout_constraintVertical_bias="1.0"
-                android:id="@+id/linearLayoutCompat">
-
-            <ImageView
-                    android:src="@drawable/ic_temperature"
-                    android:layout_width="24dp"
-                    android:layout_height="30dp"/>
-
-            <TextView
-                    style="?textAppearanceHeadline5"
-                    android:id="@+id/temp"
-                    android:text="-"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-            <ImageView
-                    android:src="@drawable/ic_humidity"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"/>
-
-            <TextView
-                    style="@style/Headline5"
-                    android:layout_marginStart="8dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/humidity"/>
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.constraintlayout.widget.Guideline
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/guideline"
-                app:layout_constraintGuide_begin="128dp"
-                android:orientation="horizontal"/>
+        <ImageView
+                android:src="@drawable/ic_temperature"
+                android:layout_width="24dp"
+                android:layout_height="30dp"/>
 
         <TextView
-                style="@style/Body2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toTopOf="@+id/guideline2"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintStart_toStartOf="parent"
+                style="?textAppearanceHeadline5"
+                android:id="@+id/temp"
+                android:text="-"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintTop_toTopOf="@+id/guideline"
-                app:layout_constraintVertical_bias="1.0"
-                android:id="@+id/connectionDetails"/>
+                android:layout_marginEnd="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-        <androidx.constraintlayout.widget.Guideline
+        <ImageView
+                android:src="@drawable/ic_humidity"
+                android:layout_width="24dp"
+                android:layout_height="24dp"/>
+
+        <TextView
+                style="@style/Headline5"
+                android:layout_marginStart="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/guideline2"
-                app:layout_constraintGuide_begin="172dp"
-                android:orientation="horizontal"/>
+                android:id="@+id/humidity"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guideline"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="112dp"/>
+
+    <TextView
+            style="@style/Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline2"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="@+id/guideline"
+            app:layout_constraintVertical_bias="0.75"
+            android:id="@+id/connectionDetails"/>
+
+    <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guideline2"
+            app:layout_constraintGuide_begin="171dp"
+            android:orientation="horizontal"/>
 
         <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/whiteDark"
+                android:background="@color/borderColorOnSurface"
                 app:layout_constraintTop_toBottomOf="parent"
                 app:layout_constraintBottom_toBottomOf="@id/guideline2"
                 app:layout_constraintStart_toStartOf="parent"
@@ -126,7 +110,7 @@
 
     <com.jjoe64.graphview.GraphView
             android:layout_width="wrap_content"
-            android:layout_height="300dp"
+            android:layout_height="240dp"
             android:id="@+id/graph"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/textView"
