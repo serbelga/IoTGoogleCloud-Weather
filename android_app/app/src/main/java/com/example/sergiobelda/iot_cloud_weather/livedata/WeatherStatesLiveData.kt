@@ -15,12 +15,16 @@ class WeatherStatesLiveData(private val documentReference: DocumentReference) : 
     }
 
     override fun onEvent(snapshot: DocumentSnapshot?, exception: FirebaseFirestoreException?) {
-        if (snapshot != null && snapshot.exists()) {
-            val states = snapshot.get("states") as ArrayList<*>
+        try {
+            if (snapshot != null && snapshot.exists()) {
+                val states = snapshot.get("states") as ArrayList<*>
 
-            value = states.toArray()
-        } else if (exception != null) {
+                value = states.toArray()
+            } else if (exception != null) {
 
+            }
+        } catch (e : Exception){
+            value = null
         }
     }
 }

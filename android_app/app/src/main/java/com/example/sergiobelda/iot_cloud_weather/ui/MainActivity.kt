@@ -3,7 +3,6 @@ package com.example.sergiobelda.iot_cloud_weather.ui
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate.*
 import androidx.fragment.app.commit
 import androidx.lifecycle.Observer
@@ -31,14 +30,19 @@ class MainActivity : AppCompatActivity() {
         viewModel.devices.observe(this, Observer { devices ->
             recyclerView.layoutManager = LinearLayoutManager(this)
             recyclerView.adapter = DevicesAdapter(devices) {
-                    device -> Log.d("Id: ", device.id)
+                device ->
+                    var bundle = Bundle()
+                    bundle.putString("device_id", device.id)
+                    var detailFragment = DetailFragment()
+                    detailFragment.arguments = bundle
+                    supportFragmentManager.commit {
+                        replace(R.id.backdrop, detailFragment)
+                    }
+                    deviceButton.text = device.id
+                    motionLayout.transitionToStart()
+                    expanded = !expanded
             }
         })
-
-
-        supportFragmentManager.commit {
-            add(R.id.backdrop, DetailFragment())
-        }
     }
 
     private fun setupToolbar() {
@@ -52,7 +56,7 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        open.setOnClickListener {
+        deviceButton.setOnClickListener {
             if (expanded) {
                 motionLayout.transitionToStart()
             } else {
@@ -60,17 +64,5 @@ class MainActivity : AppCompatActivity() {
             }
             expanded = !expanded
         }
-
-
-            /*
-            NavigationIconClickListener(
-                this,
-                backdrop,
-                AccelerateDecelerateInterpolator(),
-                R.drawable.ic_menu_black_24dp, // Menu open icon
-                R.drawable.ic_close_black_24dp
-            )*/
-        // Menu close icon
-
     }
 }
