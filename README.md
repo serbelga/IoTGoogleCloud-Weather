@@ -48,7 +48,8 @@ Developed using Android Jetpack. Firebase & Jetpack
 - [x] LiveData
 - [x] ViewModel
 - [x] Android KTX
-- [x] Animation & Transition
+- [x] MotionLayout
+- [x] Dark Theme
 
 ## Firebase Cloud Functions
 
