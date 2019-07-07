@@ -23,10 +23,10 @@
                                 app:icon="@drawable/ic_arrow_drop_down_black_24dp"
                                 android:textColor="?attr/colorControlNormal"
                                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                                android:id="@+id/open"
+                                android:id="@+id/deviceButton"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="ESP8266_4CB5CD"/>
+                                android:text="Select device"/>
                 </com.google.android.material.appbar.MaterialToolbar>
 
                 <androidx.recyclerview.widget.RecyclerView
