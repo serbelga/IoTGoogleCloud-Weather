@@ -29,7 +29,7 @@ class DetailFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        deviceId = arguments!!.getString("device_id")
+        deviceId = arguments!!.getString("device_id")!!
     }
 
     override fun onCreateView(
