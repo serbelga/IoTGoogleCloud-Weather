@@ -5,11 +5,11 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         applicationId "com.example.sergiobelda.iot_cloud_weather"
         minSdkVersion 23
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -20,6 +20,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 }
 
 apply plugin: 'com.google.gms.google-services'
@@ -27,18 +34,18 @@ apply plugin: 'com.google.gms.google-services'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0-beta01'
-    implementation 'androidx.core:core-ktx:1.2.0-alpha01'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta1'
-    implementation 'androidx.fragment:fragment-ktx:1.1.0-beta01'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.2.0-beta02'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta3'
+    implementation 'androidx.fragment:fragment-ktx:1.2.0-rc02'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation 'com.google.firebase:firebase-core:16.0.9'
-    implementation 'com.google.firebase:firebase-firestore:19.0.2'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0-alpha01'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0-alpha01'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0-alpha01'
-    implementation 'com.google.android.material:material:1.1.0-alpha07'
+    implementation 'com.google.firebase:firebase-core:17.2.1'
+    implementation 'com.google.firebase:firebase-firestore:21.2.1'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0-rc02'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0-rc02'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0-rc02'
+    implementation 'com.google.android.material:material:1.2.0-alpha01'
     implementation 'com.jjoe64:graphview:4.2.2'
 }
