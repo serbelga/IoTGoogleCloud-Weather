@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //delegate.localNightMode = MODE_NIGHT_NO
 
         setContentView(R.layout.activity_main)
 
