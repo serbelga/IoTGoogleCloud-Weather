@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import com.example.sergiobelda.iot_cloud_weather.model.Device
 import com.google.firebase.firestore.*
 
-class DevicesLiveData(private val collectionReference: CollectionReference) : LiveData<List<Device>>(), EventListener<QuerySnapshot> {
+class DevicesListLiveData(private val collectionReference: CollectionReference) : LiveData<List<Device>>(), EventListener<QuerySnapshot> {
     private var listenerRegistration: ListenerRegistration? = null
 
     override fun onActive() {

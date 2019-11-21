@@ -1,17 +1,17 @@
 package com.example.sergiobelda.iot_cloud_weather.repository
 
-import com.example.sergiobelda.iot_cloud_weather.livedata.DevicesLiveData
+import com.example.sergiobelda.iot_cloud_weather.livedata.DevicesListLiveData
 import com.example.sergiobelda.iot_cloud_weather.livedata.WeatherStateLiveData
-import com.example.sergiobelda.iot_cloud_weather.livedata.WeatherStatesLiveData
+import com.example.sergiobelda.iot_cloud_weather.livedata.WeatherStatesListLiveData
 import com.google.firebase.firestore.FirebaseFirestore
 
 class FirestoreWeatherRepository : WeatherRepository {
     private val firestore = FirebaseFirestore.getInstance()
     private val collectionPath = "device-configs"
 
-    override fun getDevices(): DevicesLiveData {
+    override fun getDevices(): DevicesListLiveData {
         val ref = firestore.collection(collectionPath)
-        return DevicesLiveData(ref)
+        return DevicesListLiveData(ref)
     }
 
     override fun getWeatherState(deviceId: String): WeatherStateLiveData {
@@ -19,8 +19,8 @@ class FirestoreWeatherRepository : WeatherRepository {
         return WeatherStateLiveData(ref)
     }
 
-    override fun getWeatherStates(deviceId: String): WeatherStatesLiveData {
+    override fun getWeatherStates(deviceId: String): WeatherStatesListLiveData {
         val ref = firestore.collection(collectionPath).document(deviceId)
-        return WeatherStatesLiveData(ref)
+        return WeatherStatesListLiveData(ref)
     }
 }

@@ -3,7 +3,7 @@ package com.example.sergiobelda.iot_cloud_weather.livedata
 import androidx.lifecycle.LiveData
 import com.google.firebase.firestore.*
 
-class WeatherStatesLiveData(private val documentReference: DocumentReference) : LiveData<Array<*>>(), EventListener<DocumentSnapshot> {
+class WeatherStatesListLiveData(private val documentReference: DocumentReference) : LiveData<Array<*>>(), EventListener<DocumentSnapshot> {
     private var listenerRegistration: ListenerRegistration? = null
 
     override fun onActive() {
