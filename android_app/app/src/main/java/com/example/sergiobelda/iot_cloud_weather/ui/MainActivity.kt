@@ -9,6 +9,7 @@ import androidx.fragment.app.commit
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.sergiobelda.iot_cloud_weather.R
 import com.example.sergiobelda.iot_cloud_weather.adapter.DevicesAdapter
 import com.example.sergiobelda.iot_cloud_weather.viewmodel.DevicesViewModel
@@ -25,15 +26,14 @@ class MainActivity : AppCompatActivity() {
         // Setup Toolbar to handle Backdrop events and Switch Theme
         setupToolbar()
 
-
         val viewModel = ViewModelProvider(this).get(DevicesViewModel::class.java)
-        viewModel.devices.observe(this, Observer { devices ->
+        viewModel.getDevices().observe(this, Observer { devices ->
             recyclerView.layoutManager = LinearLayoutManager(this)
             recyclerView.adapter = DevicesAdapter(devices) {
                 device ->
-                    var bundle = Bundle()
+                    val bundle = Bundle()
                     bundle.putString("device_id", device.id)
-                    var detailFragment = DetailFragment()
+                    val detailFragment = DetailFragment()
                     detailFragment.arguments = bundle
                     supportFragmentManager.commit {
                         replace(R.id.backdrop, detailFragment)

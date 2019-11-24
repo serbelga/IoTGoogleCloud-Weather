@@ -10,13 +10,11 @@ class WeatherStateViewModel : ViewModel() {
     private val repository: WeatherRepository = FirestoreWeatherRepository()
 
     fun getWeatherState(deviceId: String): WeatherStateLiveData {
-        val liveData = repository.getWeatherState(deviceId)
-        return liveData
+        return repository.getWeatherState(deviceId)
     }
 
     fun getWeatherStates(deviceId: String): WeatherStatesListLiveData {
-        val liveData = repository.getWeatherStates(deviceId)
-        return liveData
+        return repository.getWeatherStates(deviceId)
     }
 }
 

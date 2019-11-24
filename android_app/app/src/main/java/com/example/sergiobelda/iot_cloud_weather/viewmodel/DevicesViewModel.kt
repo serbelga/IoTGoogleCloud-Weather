@@ -7,5 +7,5 @@ import com.example.sergiobelda.iot_cloud_weather.repository.WeatherRepository
 class DevicesViewModel : ViewModel() {
     private val repository: WeatherRepository = FirestoreWeatherRepository()
 
-    val devices = repository.getDevices()
+    fun getDevices() = repository.getDevices()
 }

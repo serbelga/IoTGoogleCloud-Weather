@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.motion.widget.MotionLayout
-        xmlns:tools="http://schemas.android.com/tools" android:layout_height="match_parent"
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:id="@+id/motionLayout"
         app:layoutDescription="@xml/motion_scene"
@@ -47,12 +47,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 
-
                 <FrameLayout
                         android:id="@+id/backdrop"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
                 </FrameLayout>
-
         </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.motion.widget.MotionLayout>
