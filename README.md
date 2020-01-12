@@ -44,13 +44,11 @@ Timer.set(50000, true, function() {
 
 ## Android App
 
-Developed using Android Jetpack. Firebase & Jetpack
-- [x] LiveData
-- [x] ViewModel
-- [x] Android KTX
-- [x] MotionLayout
-- [x] Dark Theme
-
-## Firebase Cloud Functions
-
-...
+Developed using Firebase & Android Jetpack
+- Cloud Firestore
+- LiveData
+- DataBinding
+- ViewModel
+- Android KTX
+- MotionLayout
+- Material Design Components
