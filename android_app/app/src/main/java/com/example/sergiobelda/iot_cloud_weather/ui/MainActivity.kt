@@ -9,7 +9,6 @@ import androidx.fragment.app.commit
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.sergiobelda.iot_cloud_weather.R
 import com.example.sergiobelda.iot_cloud_weather.adapter.DevicesAdapter
 import com.example.sergiobelda.iot_cloud_weather.viewmodel.DevicesViewModel

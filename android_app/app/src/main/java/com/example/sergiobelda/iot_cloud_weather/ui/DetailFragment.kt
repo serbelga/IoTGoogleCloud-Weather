@@ -13,7 +13,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.example.sergiobelda.iot_cloud_weather.R
 import com.example.sergiobelda.iot_cloud_weather.databinding.FragmentDetailBinding
 import com.example.sergiobelda.iot_cloud_weather.viewmodel.WeatherStateViewModel
@@ -45,6 +44,7 @@ class DetailFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail, container, false)
+        binding.lifecycleOwner = this
         return binding.root
     }
 
