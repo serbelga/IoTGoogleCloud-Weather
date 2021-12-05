@@ -17,4 +17,3 @@ class WeatherStateViewModel : ViewModel() {
         return repository.getWeatherStates(deviceId)
     }
 }
-

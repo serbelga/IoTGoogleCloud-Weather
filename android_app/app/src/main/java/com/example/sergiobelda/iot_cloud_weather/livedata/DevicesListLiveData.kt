@@ -2,9 +2,15 @@ package com.example.sergiobelda.iot_cloud_weather.livedata
 
 import androidx.lifecycle.LiveData
 import com.example.sergiobelda.iot_cloud_weather.model.Device
-import com.google.firebase.firestore.*
+import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.EventListener
+import com.google.firebase.firestore.FirebaseFirestoreException
+import com.google.firebase.firestore.ListenerRegistration
+import com.google.firebase.firestore.QuerySnapshot
 
-class DevicesListLiveData(private val collectionReference: CollectionReference) : LiveData<List<Device>>(), EventListener<QuerySnapshot> {
+class DevicesListLiveData(private val collectionReference: CollectionReference) :
+    LiveData<List<Device>>(),
+    EventListener<QuerySnapshot> {
     private var listenerRegistration: ListenerRegistration? = null
 
     override fun onActive() {
@@ -21,8 +27,6 @@ class DevicesListLiveData(private val collectionReference: CollectionReference) 
             for (document in snapshot.documents) {
                 devices.add(Device(document.id))
             }
-        } else if (exception != null) {
-
         }
         value = devices
     }

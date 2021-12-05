@@ -11,23 +11,20 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.sergiobelda.iot_cloud_weather.R
 import com.example.sergiobelda.iot_cloud_weather.databinding.FragmentDetailBinding
 import com.example.sergiobelda.iot_cloud_weather.viewmodel.WeatherStateViewModel
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
-import kotlinx.android.synthetic.main.fragment_detail.*
 import org.json.JSONObject
 
 /**
  * A simple [Fragment] subclass.
- *
  */
 class DetailFragment : Fragment() {
 
-    private val viewModel by lazy { ViewModelProvider(this).get(WeatherStateViewModel::class.java) }
+    private val viewModel by lazy { ViewModelProvider(this)[WeatherStateViewModel::class.java] }
 
     private lateinit var deviceId: String
 
@@ -39,10 +36,10 @@ class DetailFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+    ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail, container, false)
         binding.lifecycleOwner = this
         return binding.root
@@ -50,33 +47,33 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        graph.viewport.isXAxisBoundsManual = true
-        graph.viewport.setMaxX(20.0)
+        binding.graph.viewport.isXAxisBoundsManual = true
+        binding.graph.viewport.setMaxX(20.0)
         setWeatherState()
         setWeatherPlots()
     }
 
     private fun setWeatherPlots() {
-        viewModel.getWeatherStates(deviceId).observe(this, Observer {weatherStates ->
-            if (weatherStates != null){
+        viewModel.getWeatherStates(deviceId).observe(this) { weatherStates ->
+            if (weatherStates != null) {
                 val arrayDataPoint = Array(20) { DataPoint(0.0, 0.0) }
                 for (i in weatherStates.indices) {
-                    val json = JSONObject(weatherStates[i] as HashMap<*,*>)
-                    val state : JSONObject = json.get("state") as JSONObject
+                    val json = JSONObject(weatherStates[i] as HashMap<*, *>)
+                    val state: JSONObject = json.get("state") as JSONObject
                     arrayDataPoint[i] = DataPoint(i.toDouble(), state.get("temperature").toString().toDouble())
                 }
-                val series = LineGraphSeries<DataPoint>(arrayDataPoint)
+                val series = LineGraphSeries(arrayDataPoint)
                 series.color = ContextCompat.getColor(context!!, R.color.colorPrimaryDark)
-                graph.removeAllSeries()
-                graph.addSeries(series)
+                binding.graph.removeAllSeries()
+                binding.graph.addSeries(series)
             } else {
                 Log.e(TAG, "Weather states null")
             }
-        })
+        }
     }
 
     private fun setWeatherState() {
-        viewModel.getWeatherState(deviceId).observe(this, Observer { weatherState ->
+        viewModel.getWeatherState(deviceId).observe(this) { weatherState ->
             if (weatherState != null) {
                 val online = if (weatherState.online) "Connected" else "Disconnected"
                 val color = if (weatherState.online) R.color.colorOk else R.color.colorError
@@ -84,14 +81,15 @@ class DetailFragment : Fragment() {
                 spannable.setSpan(
                     ForegroundColorSpan(ContextCompat.getColor(context!!, color)),
                     0, online.length,
-                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
 
                 binding.weatherstate = weatherState
-                connection_details.text = spannable
+                binding.connectionDetails.text = spannable
             } else {
                 Log.e(TAG, "Weather state null")
             }
-        })
+        }
     }
 
     companion object {

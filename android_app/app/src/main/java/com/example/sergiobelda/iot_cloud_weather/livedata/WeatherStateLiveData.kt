@@ -4,9 +4,15 @@ import android.text.format.DateFormat
 import androidx.lifecycle.LiveData
 import com.example.sergiobelda.iot_cloud_weather.model.WeatherState
 import com.google.firebase.Timestamp
-import com.google.firebase.firestore.*
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.EventListener
+import com.google.firebase.firestore.FirebaseFirestoreException
+import com.google.firebase.firestore.ListenerRegistration
 
-class WeatherStateLiveData(private val documentReference: DocumentReference) : LiveData<WeatherState>(), EventListener<DocumentSnapshot> {
+class WeatherStateLiveData(private val documentReference: DocumentReference) :
+    LiveData<WeatherState>(),
+    EventListener<DocumentSnapshot> {
     private var listenerRegistration: ListenerRegistration? = null
 
     override fun onActive() {
@@ -31,11 +37,7 @@ class WeatherStateLiveData(private val documentReference: DocumentReference) : L
                     online = online
                 )
                 value = weatherState
-            } else if (exception != null) {
-
             }
-        } catch (e : Exception){
-            value = null
-        }
+        } catch (e: Exception) {}
     }
 }
