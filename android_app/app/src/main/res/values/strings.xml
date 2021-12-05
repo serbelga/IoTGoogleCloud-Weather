@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">IoT Weather Station</string>
-
     <string name="temperature">Temperature</string>
     <string name="device">Device</string>
     <string name="devices">Devices</string>

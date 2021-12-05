@@ -3,10 +3,11 @@ package com.example.sergiobelda.iot_cloud_weather.repository
 import com.example.sergiobelda.iot_cloud_weather.livedata.DevicesListLiveData
 import com.example.sergiobelda.iot_cloud_weather.livedata.WeatherStateLiveData
 import com.example.sergiobelda.iot_cloud_weather.livedata.WeatherStatesListLiveData
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class FirestoreWeatherRepository : WeatherRepository {
-    private val firestore = FirebaseFirestore.getInstance()
+    private val firestore = Firebase.firestore
     private val collectionPath = "device-configs"
 
     override fun getDevices(): DevicesListLiveData {

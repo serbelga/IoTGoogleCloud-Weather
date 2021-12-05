@@ -2,9 +2,9 @@ package com.example.sergiobelda.iot_cloud_weather.util
 
 import kotlin.math.roundToInt
 
-class FormatNumber {
+object FormatNumber {
     fun getFormatNumberString(number: Double): String {
-        return ((number * 100.0).roundToInt() / 100.0).toString()
+        return getFormatNumberDouble(number).toString()
     }
 
     fun getFormatNumberDouble(number: Double): Double {

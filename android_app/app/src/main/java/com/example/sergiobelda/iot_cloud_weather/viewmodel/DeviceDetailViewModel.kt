@@ -6,7 +6,7 @@ import com.example.sergiobelda.iot_cloud_weather.livedata.WeatherStatesListLiveD
 import com.example.sergiobelda.iot_cloud_weather.repository.FirestoreWeatherRepository
 import com.example.sergiobelda.iot_cloud_weather.repository.WeatherRepository
 
-class WeatherStateViewModel : ViewModel() {
+class DeviceDetailViewModel : ViewModel() {
     private val repository: WeatherRepository = FirestoreWeatherRepository()
 
     fun getWeatherState(deviceId: String): WeatherStateLiveData {

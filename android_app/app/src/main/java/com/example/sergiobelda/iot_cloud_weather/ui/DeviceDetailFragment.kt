@@ -11,10 +11,10 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.example.sergiobelda.iot_cloud_weather.R
-import com.example.sergiobelda.iot_cloud_weather.databinding.FragmentDetailBinding
-import com.example.sergiobelda.iot_cloud_weather.viewmodel.WeatherStateViewModel
+import com.example.sergiobelda.iot_cloud_weather.databinding.DeviceDetailFragmentBinding
+import com.example.sergiobelda.iot_cloud_weather.viewmodel.DeviceDetailViewModel
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import org.json.JSONObject
@@ -22,17 +22,17 @@ import org.json.JSONObject
 /**
  * A simple [Fragment] subclass.
  */
-class DetailFragment : Fragment() {
+class DeviceDetailFragment : Fragment() {
 
-    private val viewModel by lazy { ViewModelProvider(this)[WeatherStateViewModel::class.java] }
+    private val viewModel by viewModels<DeviceDetailViewModel>()
 
     private lateinit var deviceId: String
 
-    private lateinit var binding: FragmentDetailBinding
+    private lateinit var binding: DeviceDetailFragmentBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        deviceId = arguments!!.getString("device_id")!!
+        deviceId = arguments!!.getString(ARG_DEVICE_ID)!!
     }
 
     override fun onCreateView(
@@ -40,7 +40,8 @@ class DetailFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail, container, false)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.device_detail_fragment, container, false)
         binding.lifecycleOwner = this
         return binding.root
     }
@@ -60,7 +61,8 @@ class DetailFragment : Fragment() {
                 for (i in weatherStates.indices) {
                     val json = JSONObject(weatherStates[i] as HashMap<*, *>)
                     val state: JSONObject = json.get("state") as JSONObject
-                    arrayDataPoint[i] = DataPoint(i.toDouble(), state.get("temperature").toString().toDouble())
+                    arrayDataPoint[i] =
+                        DataPoint(i.toDouble(), state.get("temperature").toString().toDouble())
                 }
                 val series = LineGraphSeries(arrayDataPoint)
                 series.color = ContextCompat.getColor(context!!, R.color.colorPrimaryDark)
@@ -77,14 +79,15 @@ class DetailFragment : Fragment() {
             if (weatherState != null) {
                 val online = if (weatherState.online) "Connected" else "Disconnected"
                 val color = if (weatherState.online) R.color.colorOk else R.color.colorError
-                val spannable = SpannableString("$online - Last update: ${weatherState.lastConnection}")
+                val spannable =
+                    SpannableString("$online - Last update: ${weatherState.lastConnection}")
                 spannable.setSpan(
                     ForegroundColorSpan(ContextCompat.getColor(context!!, color)),
                     0, online.length,
                     Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
                 )
 
-                binding.weatherstate = weatherState
+                binding.weatherState = weatherState
                 binding.connectionDetails.text = spannable
             } else {
                 Log.e(TAG, "Weather state null")
@@ -93,6 +96,7 @@ class DetailFragment : Fragment() {
     }
 
     companion object {
-        const val TAG = "DetailFragment"
+        private const val TAG = "DetailFragment"
+        const val ARG_DEVICE_ID = "device_id"
     }
 }

@@ -2,23 +2,27 @@ package com.example.sergiobelda.iot_cloud_weather.ui
 
 import android.content.res.Configuration
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
 import androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.fragment.app.commit
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sergiobelda.iot_cloud_weather.R
 import com.example.sergiobelda.iot_cloud_weather.databinding.ActivityMainBinding
-import com.example.sergiobelda.iot_cloud_weather.viewmodel.DevicesViewModel
+import com.example.sergiobelda.iot_cloud_weather.ui.DeviceDetailFragment.Companion.ARG_DEVICE_ID
+import com.example.sergiobelda.iot_cloud_weather.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
     private var expanded = false
+
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,14 +33,14 @@ class MainActivity : AppCompatActivity() {
         // Setup Toolbar to handle Backdrop events and Switch Theme
         setupToolbar()
 
-        val viewModel = ViewModelProvider(this)[DevicesViewModel::class.java]
         viewModel.getDevices().observe(this) { devices ->
             binding.recyclerView.layoutManager = LinearLayoutManager(this)
             binding.recyclerView.adapter = DevicesAdapter(devices) { device ->
-                val bundle = Bundle()
-                bundle.putString("device_id", device.id)
-                val detailFragment = DetailFragment()
-                detailFragment.arguments = bundle
+                val detailFragment = DeviceDetailFragment().apply {
+                    arguments = bundleOf(
+                        ARG_DEVICE_ID to device.id
+                    )
+                }
                 supportFragmentManager.commit {
                     replace(R.id.backdrop, detailFragment)
                 }
