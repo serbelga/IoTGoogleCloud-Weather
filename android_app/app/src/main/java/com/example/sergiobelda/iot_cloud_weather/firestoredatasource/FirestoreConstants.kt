@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-package com.example.sergiobelda.iot_cloud_weather.model
+package com.example.sergiobelda.iot_cloud_weather.firestoredatasource
 
-import java.io.Serializable
-
-data class Device(val id: String) : Serializable
+object FirestoreConstants {
+    const val collectionPath = "device-configs"
+}

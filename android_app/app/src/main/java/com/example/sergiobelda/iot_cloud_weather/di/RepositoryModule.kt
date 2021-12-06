@@ -14,22 +14,24 @@
  * limitations under the License.
  */
 
-package com.example.sergiobelda.iot_cloud_weather.viewmodel
+package com.example.sergiobelda.iot_cloud_weather.di
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
-import com.example.sergiobelda.iot_cloud_weather.data.Result
-import com.example.sergiobelda.iot_cloud_weather.model.Device
+import com.example.sergiobelda.iot_cloud_weather.firestoredatasource.IFirestoreDataSource
 import com.example.sergiobelda.iot_cloud_weather.repository.IWeatherRepository
-import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
+import com.example.sergiobelda.iot_cloud_weather.repository.WeatherRepository
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.android.scopes.ViewModelScoped
 
-@HiltViewModel
-class MainViewModel @Inject constructor(
-    private val weatherRepository: IWeatherRepository
-) : ViewModel() {
+@Module
+@InstallIn(ViewModelComponent::class)
+object RepositoryModule {
 
-    fun getDevices(): LiveData<Result<List<Device>>> =
-        weatherRepository.getDevices().asLiveData()
+    @Provides
+    @ViewModelScoped
+    fun provideWeatherRepository(
+        firestoreDataSource: IFirestoreDataSource
+    ): IWeatherRepository = WeatherRepository(firestoreDataSource)
 }

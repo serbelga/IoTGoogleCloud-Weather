@@ -14,25 +14,19 @@
  * limitations under the License.
  */
 
-package com.example.sergiobelda.iot_cloud_weather.repository
+package com.example.sergiobelda.iot_cloud_weather.firestoredatasource
 
 import com.example.sergiobelda.iot_cloud_weather.data.Result
-import com.example.sergiobelda.iot_cloud_weather.firestoredatasource.IFirestoreDataSource
 import com.example.sergiobelda.iot_cloud_weather.model.Device
 import com.example.sergiobelda.iot_cloud_weather.model.DeviceWeatherState
 import com.example.sergiobelda.iot_cloud_weather.model.Weather
 import kotlinx.coroutines.flow.Flow
 
-class WeatherRepository(
-    private val firestoreDataSource: IFirestoreDataSource
-) : IWeatherRepository {
+interface IFirestoreDataSource {
 
-    override fun getDevices(): Flow<Result<List<Device>>> =
-        firestoreDataSource.getDevices()
+    fun getDevices(): Flow<Result<List<Device>>>
 
-    override fun getDeviceWeatherState(deviceId: String): Flow<Result<DeviceWeatherState>> =
-        firestoreDataSource.getDeviceWeatherState(deviceId)
+    fun getDeviceWeatherState(deviceId: String): Flow<Result<DeviceWeatherState>>
 
-    override fun getDeviceLastWeatherList(deviceId: String): Flow<Result<List<Weather>>> =
-        firestoreDataSource.getDeviceLastWeatherList(deviceId)
+    fun getDeviceLastWeatherList(deviceId: String): Flow<Result<List<Weather>>>
 }

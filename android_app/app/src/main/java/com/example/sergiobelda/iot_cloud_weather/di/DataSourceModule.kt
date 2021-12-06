@@ -14,8 +14,22 @@
  * limitations under the License.
  */
 
-package com.example.sergiobelda.iot_cloud_weather.model
+package com.example.sergiobelda.iot_cloud_weather.di
 
-import java.io.Serializable
+import com.example.sergiobelda.iot_cloud_weather.firestoredatasource.FirestoreDataSource
+import com.example.sergiobelda.iot_cloud_weather.firestoredatasource.IFirestoreDataSource
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
-data class Device(val id: String) : Serializable
+@Module
+@InstallIn(SingletonComponent::class)
+object DataSourceModule {
+
+    @Provides
+    @Singleton
+    fun provideFirestoreDataSource(): IFirestoreDataSource =
+        FirestoreDataSource()
+}
