@@ -14,16 +14,20 @@
  * limitations under the License.
  */
 
-package com.example.sergiobelda.iot_cloud_weather.firestoredatasource
+package com.example.sergiobelda.iot_cloud_weather.ui.theme
 
-import com.example.sergiobelda.iot_cloud_weather.data.Result
-import com.example.sergiobelda.iot_cloud_weather.model.Device
-import com.example.sergiobelda.iot_cloud_weather.model.DeviceWeatherState
-import kotlinx.coroutines.flow.Flow
+import androidx.compose.material.darkColors
+import androidx.compose.material.lightColors
+import androidx.compose.ui.graphics.Color
 
-interface IFirestoreDataSource {
+val orange300 = Color(0xFFFF8A65)
+val orange800 = Color(0xFFD84315)
 
-    fun getDevices(): Flow<Result<List<Device>>>
+val lightColors = lightColors(
+    primary = orange800
+)
 
-    fun getDeviceWeatherState(deviceId: String): Flow<Result<DeviceWeatherState>>
-}
+val darkColors = darkColors(
+    primary = orange300,
+    onPrimary = Color.White
+)

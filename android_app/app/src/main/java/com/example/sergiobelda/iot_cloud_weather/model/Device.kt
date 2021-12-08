@@ -18,4 +18,4 @@ package com.example.sergiobelda.iot_cloud_weather.model
 
 import java.io.Serializable
 
-data class Device(val id: String) : Serializable
+data class Device(val id: String?) : Serializable

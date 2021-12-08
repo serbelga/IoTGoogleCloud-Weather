@@ -21,7 +21,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.example.sergiobelda.iot_cloud_weather.data.Result
 import com.example.sergiobelda.iot_cloud_weather.model.DeviceWeatherState
-import com.example.sergiobelda.iot_cloud_weather.model.Weather
 import com.example.sergiobelda.iot_cloud_weather.repository.IWeatherRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -33,7 +32,4 @@ class DeviceDetailViewModel @Inject constructor(
 
     fun getDeviceWeatherState(deviceId: String): LiveData<Result<DeviceWeatherState>> =
         weatherRepository.getDeviceWeatherState(deviceId).asLiveData()
-
-    fun getDeviceLastWeatherList(deviceId: String): LiveData<Result<List<Weather>>> =
-        weatherRepository.getDeviceLastWeatherList(deviceId).asLiveData()
 }

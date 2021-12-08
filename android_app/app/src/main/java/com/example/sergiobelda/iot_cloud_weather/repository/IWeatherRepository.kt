@@ -19,7 +19,6 @@ package com.example.sergiobelda.iot_cloud_weather.repository
 import com.example.sergiobelda.iot_cloud_weather.data.Result
 import com.example.sergiobelda.iot_cloud_weather.model.Device
 import com.example.sergiobelda.iot_cloud_weather.model.DeviceWeatherState
-import com.example.sergiobelda.iot_cloud_weather.model.Weather
 import kotlinx.coroutines.flow.Flow
 
 interface IWeatherRepository {
@@ -27,6 +26,4 @@ interface IWeatherRepository {
     fun getDevices(): Flow<Result<List<Device>>>
 
     fun getDeviceWeatherState(deviceId: String): Flow<Result<DeviceWeatherState>>
-
-    fun getDeviceLastWeatherList(deviceId: String): Flow<Result<List<Weather>>>
 }

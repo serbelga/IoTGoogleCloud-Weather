@@ -3,26 +3,23 @@
     <!-- Theme Colors -->
     
     <!-- Light -->
-    <color name="amber200">#ffe082</color>
-    <color name="amber200Dark">#caae53</color>
 
+    <color name="orange300">#FF8A65</color>
+    <color name="orange300Dark">#C75B39</color>
 
     <!-- Dark -->
-    <color name="amber600">#ffb300</color>
-    <color name="amber600Dark">#c68400</color>
 
+    <color name="orange800">#D84315</color>
+    <color name="orange800Dark">#9F310F</color>
 
     <!-- Theme Attributes -->
-    <color name="colorPrimary">@color/amber200</color>
-    <color name="colorPrimaryDark">@color/amber200Dark</color>
+    <color name="colorPrimary">@color/orange800</color>
+    <color name="colorPrimaryDark">@color/orange800Dark</color>
     <color name="colorError">@color/red800</color>
     <color name="colorOk">@color/teal400</color>
 
 
     <!-- Other colors -->
-
-    <color name="borderColorOnSurface">#1F000000</color>
-
 
     <color name="red300">#e57373</color>
     <color name="red800">#c62828</color>

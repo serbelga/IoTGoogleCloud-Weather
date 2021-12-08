@@ -16,87 +16,178 @@
 
 package com.example.sergiobelda.iot_cloud_weather.ui
 
-import android.content.res.Configuration
 import android.os.Bundle
-import androidx.activity.viewModels
+import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
-import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
-import androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode
-import androidx.core.content.ContextCompat
-import androidx.core.os.bundleOf
-import androidx.fragment.app.commit
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.material.BackdropScaffold
+import androidx.compose.material.BackdropValue
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.rememberBackdropScaffoldState
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.sergiobelda.iot_cloud_weather.R
 import com.example.sergiobelda.iot_cloud_weather.data.doIfSuccess
-import com.example.sergiobelda.iot_cloud_weather.databinding.ActivityMainBinding
-import com.example.sergiobelda.iot_cloud_weather.ui.DeviceDetailFragment.Companion.ARG_DEVICE_ID
+import com.example.sergiobelda.iot_cloud_weather.model.Device
+import com.example.sergiobelda.iot_cloud_weather.ui.theme.IoTCloudWeatherTheme
+import com.example.sergiobelda.iot_cloud_weather.viewmodel.DeviceDetailViewModel
 import com.example.sergiobelda.iot_cloud_weather.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
-
-    private var expanded = false
-
-    private val viewModel: MainViewModel by viewModels()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContent {
+            IoTCloudWeatherApp()
+        }
+    }
+}
 
-        // Setup Toolbar to handle Backdrop events and Switch Theme
-        setupToolbar()
+@Composable
+fun IoTCloudWeatherApp() {
+    IoTCloudWeatherTheme {
+        MainScreen()
+    }
+}
 
-        viewModel.getDevices().observe(this) { result ->
-            result.doIfSuccess {
-                binding.recyclerView.layoutManager = LinearLayoutManager(this)
-                binding.recyclerView.adapter = DevicesAdapter(it) { device ->
-                    val detailFragment = DeviceDetailFragment().apply {
-                        arguments = bundleOf(
-                            ARG_DEVICE_ID to device.id
-                        )
+@OptIn(ExperimentalMaterialApi::class)
+@Composable
+fun MainScreen(mainViewModel: MainViewModel = viewModel()) {
+    val devicesResult by mainViewModel.devices.collectAsState()
+    var selected by remember { mutableStateOf(0) }
+    val scaffoldState = rememberBackdropScaffoldState(
+        BackdropValue.Concealed
+    )
+    val scope = rememberCoroutineScope()
+    BackdropScaffold(
+        scaffoldState = scaffoldState,
+        appBar = {
+            TopAppBar(
+                title = {
+                    Text(text = stringResource(id = R.string.app_name))
+                },
+                navigationIcon = {
+                    if (scaffoldState.isConcealed) {
+                        IconButton(
+                            onClick = {
+                                scope.launch { scaffoldState.reveal() }
+                            }
+                        ) {
+                            Icon(
+                                Icons.Default.Menu,
+                                contentDescription = "Menu"
+                            )
+                        }
+                    } else {
+                        IconButton(
+                            onClick = {
+                                scope.launch { scaffoldState.conceal() }
+                            }
+                        ) {
+                            Icon(
+                                Icons.Default.Close,
+                                contentDescription = "Close"
+                            )
+                        }
                     }
-                    supportFragmentManager.commit {
-                        replace(R.id.backdrop, detailFragment)
-                    }
-                    binding.deviceButton.text = device.id
-                    setToolbarExpanded(expanded)
-                    expanded = !expanded
+                },
+                elevation = 0.dp,
+                backgroundColor = Color.Transparent
+            )
+        },
+        backLayerContent = {
+            devicesResult.doIfSuccess { devices ->
+                DeviceList(devices, selected) {
+                    selected = it
                 }
             }
-        }
-    }
-
-    private fun setupToolbar() {
-        val themeMenuItem = binding.toolbar.menu.findItem(R.id.theme)
-        themeMenuItem.setOnMenuItemClickListener {
-            when (resources.configuration.uiMode.and(Configuration.UI_MODE_NIGHT_MASK)) {
-                Configuration.UI_MODE_NIGHT_NO -> setDefaultNightMode(MODE_NIGHT_YES)
-                Configuration.UI_MODE_NIGHT_YES -> setDefaultNightMode(MODE_NIGHT_NO)
+        },
+        frontLayerContent = {
+            devicesResult.doIfSuccess { list ->
+                list.getOrNull(selected)?.id?.let { DeviceDetailView(it) }
             }
-            true
         }
+    )
+}
 
-        binding.deviceButton.setOnClickListener {
-            setToolbarExpanded(expanded)
-            expanded = !expanded
+@Composable
+fun DeviceList(devices: List<Device>, selected: Int, onClick: (Int) -> Unit) {
+    Column(modifier = Modifier.padding(16.dp)) {
+        Text(
+            stringResource(id = R.string.devices).uppercase(),
+            style = MaterialTheme.typography.overline
+        )
+        LazyColumn(modifier = Modifier.padding(top = 8.dp)) {
+            itemsIndexed(devices) { index, device ->
+                DeviceItem(device = device, isSelected = index == selected) { onClick(index) }
+            }
         }
     }
+}
 
-    private fun setToolbarExpanded(expanded: Boolean) {
-        if (expanded) {
-            binding.motionLayout.transitionToStart()
-            binding.deviceButton.icon =
-                ContextCompat.getDrawable(this, R.drawable.ic_arrow_drop_down_black_24dp)
-        } else {
-            binding.motionLayout.transitionToEnd()
-            binding.deviceButton.icon =
-                ContextCompat.getDrawable(this, R.drawable.ic_arrow_drop_up_black_24dp)
-        }
+@Composable
+fun DeviceItem(device: Device, isSelected: Boolean, onClick: () -> Unit) {
+    val modifier = if (isSelected) {
+        Modifier.background(
+            color = MaterialTheme.colors.onPrimary.copy(alpha = 0.2f),
+            shape = MaterialTheme.shapes.medium
+        )
+    } else {
+        Modifier
+    }
+    Row(
+        modifier = modifier
+            .height(36.dp)
+            .fillMaxWidth()
+            .clip(MaterialTheme.shapes.medium)
+            .selectable(isSelected, onClick = onClick),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            device.id ?: "-",
+            modifier = Modifier.padding(start = 8.dp),
+            style = MaterialTheme.typography.subtitle1
+        )
+    }
+}
+
+@Composable
+fun DeviceDetailView(deviceId: String, deviceDetailViewModel: DeviceDetailViewModel = viewModel()) {
+    val deviceWeatherState by deviceDetailViewModel.getDeviceWeatherState(deviceId).observeAsState()
+    deviceWeatherState?.doIfSuccess {
+        Text(it.weather?.getTemperatureString().toString())
     }
 }

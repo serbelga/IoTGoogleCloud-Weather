@@ -16,13 +16,15 @@
 
 package com.example.sergiobelda.iot_cloud_weather.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.sergiobelda.iot_cloud_weather.data.Result
 import com.example.sergiobelda.iot_cloud_weather.model.Device
 import com.example.sergiobelda.iot_cloud_weather.repository.IWeatherRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
 @HiltViewModel
@@ -30,6 +32,10 @@ class MainViewModel @Inject constructor(
     private val weatherRepository: IWeatherRepository
 ) : ViewModel() {
 
-    fun getDevices(): LiveData<Result<List<Device>>> =
-        weatherRepository.getDevices().asLiveData()
+    val devices: StateFlow<Result<List<Device>>> =
+        weatherRepository.getDevices().stateIn(
+            viewModelScope,
+            SharingStarted.WhileSubscribed(),
+            Result.Loading
+        )
 }

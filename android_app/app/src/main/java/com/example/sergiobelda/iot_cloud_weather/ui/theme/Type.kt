@@ -14,16 +14,17 @@
  * limitations under the License.
  */
 
-package com.example.sergiobelda.iot_cloud_weather.firestoredatasource
+package com.example.sergiobelda.iot_cloud_weather.ui.theme
 
-import com.example.sergiobelda.iot_cloud_weather.data.Result
-import com.example.sergiobelda.iot_cloud_weather.model.Device
-import com.example.sergiobelda.iot_cloud_weather.model.DeviceWeatherState
-import kotlinx.coroutines.flow.Flow
+import androidx.compose.material.Typography
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import com.example.sergiobelda.iot_cloud_weather.R
 
-interface IFirestoreDataSource {
+val rubikFontFamily = FontFamily(
+    Font(R.font.rubik_medium, weight = FontWeight.Medium),
+    Font(R.font.rubik_regular, weight = FontWeight.Normal)
+)
 
-    fun getDevices(): Flow<Result<List<Device>>>
-
-    fun getDeviceWeatherState(deviceId: String): Flow<Result<DeviceWeatherState>>
-}
+val typography = Typography(defaultFontFamily = rubikFontFamily)

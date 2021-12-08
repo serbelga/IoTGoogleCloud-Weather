@@ -16,20 +16,20 @@
 
 package com.example.sergiobelda.iot_cloud_weather.model
 
-import com.example.sergiobelda.iot_cloud_weather.util.FormatNumber
+import com.example.sergiobelda.iot_cloud_weather.util.FormatNumber.getFormatNumberString
 import java.io.Serializable
 
 data class Weather(
-    var temperature: Double = 0.0,
-    var humidity: Double = 0.0
+    var temperature: Double?,
+    var humidity: Double?
 ) : Serializable {
-    fun getTemperatureString(): String {
-        val temperature = FormatNumber.getFormatNumberString(temperature)
-        return "$temperature°"
-    }
+    fun getTemperatureString(): String =
+        temperature?.let {
+            "${getFormatNumberString(it)}°"
+        } ?: "-°"
 
-    fun getHumidityString(): String {
-        val humidity = FormatNumber.getFormatNumberString(humidity)
-        return "$humidity%"
-    }
+    fun getHumidityString(): String =
+        humidity?.let {
+            "${getFormatNumberString(it)}%"
+        } ?: "-%"
 }

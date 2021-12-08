@@ -20,7 +20,6 @@ import com.example.sergiobelda.iot_cloud_weather.data.Result
 import com.example.sergiobelda.iot_cloud_weather.firestoredatasource.IFirestoreDataSource
 import com.example.sergiobelda.iot_cloud_weather.model.Device
 import com.example.sergiobelda.iot_cloud_weather.model.DeviceWeatherState
-import com.example.sergiobelda.iot_cloud_weather.model.Weather
 import kotlinx.coroutines.flow.Flow
 
 class WeatherRepository(
@@ -32,7 +31,4 @@ class WeatherRepository(
 
     override fun getDeviceWeatherState(deviceId: String): Flow<Result<DeviceWeatherState>> =
         firestoreDataSource.getDeviceWeatherState(deviceId)
-
-    override fun getDeviceLastWeatherList(deviceId: String): Flow<Result<List<Weather>>> =
-        firestoreDataSource.getDeviceLastWeatherList(deviceId)
 }

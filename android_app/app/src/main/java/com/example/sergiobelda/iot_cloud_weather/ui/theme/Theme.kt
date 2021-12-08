@@ -14,16 +14,22 @@
  * limitations under the License.
  */
 
-package com.example.sergiobelda.iot_cloud_weather.firestoredatasource
+package com.example.sergiobelda.iot_cloud_weather.ui.theme
 
-import com.example.sergiobelda.iot_cloud_weather.data.Result
-import com.example.sergiobelda.iot_cloud_weather.model.Device
-import com.example.sergiobelda.iot_cloud_weather.model.DeviceWeatherState
-import kotlinx.coroutines.flow.Flow
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material.MaterialTheme
+import androidx.compose.runtime.Composable
 
-interface IFirestoreDataSource {
-
-    fun getDevices(): Flow<Result<List<Device>>>
-
-    fun getDeviceWeatherState(deviceId: String): Flow<Result<DeviceWeatherState>>
+@Composable
+fun IoTCloudWeatherTheme(content: @Composable () -> Unit) {
+    val colors = if (isSystemInDarkTheme()) {
+        darkColors
+    } else {
+        lightColors
+    }
+    MaterialTheme(
+        colors = colors,
+        typography = typography,
+        content = content
+    )
 }

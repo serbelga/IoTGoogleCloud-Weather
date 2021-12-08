@@ -16,14 +16,14 @@
 
 package com.example.sergiobelda.iot_cloud_weather.firestoredatasource
 
-import android.text.format.DateFormat
 import com.example.sergiobelda.iot_cloud_weather.data.Result
 import com.example.sergiobelda.iot_cloud_weather.firestoredatasource.FirestoreConstants.collectionPath
+import com.example.sergiobelda.iot_cloud_weather.firestoredatasource.mapper.DeviceWeatherStateMapper.map
+import com.example.sergiobelda.iot_cloud_weather.firestoredatasource.model.DeviceWeatherStateFirestore
 import com.example.sergiobelda.iot_cloud_weather.model.Device
 import com.example.sergiobelda.iot_cloud_weather.model.DeviceWeatherState
-import com.example.sergiobelda.iot_cloud_weather.model.Weather
 import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.getField
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
@@ -50,34 +50,21 @@ class FirestoreDataSource : IFirestoreDataSource {
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    override fun getDeviceWeatherState(deviceId: String): Flow<Result<DeviceWeatherState>> = callbackFlow {
-        val documentReference = Firebase.firestore.collection(collectionPath).document(deviceId)
-        val listenerRegistration = documentReference.addSnapshotListener { value, error ->
-            if (value != null) {
-                // TODO: try/catch and map result to object.
-                val online = value.getBoolean("online")
-                val timestamp = value.getTimestamp("timestamp")
-                val state = value.getField<Weather>("state")
-                val dateFormat = DateFormat.format("dd-MM-yyyy HH:mm:ss", timestamp?.toDate()).toString()
+    override fun getDeviceWeatherState(deviceId: String): Flow<Result<DeviceWeatherState>> =
+        callbackFlow {
+            val documentReference = Firebase.firestore.collection(collectionPath).document(deviceId)
+            val listenerRegistration = documentReference.addSnapshotListener { value, error ->
+                if (value != null) {
+                    val deviceWeatherState =
+                        value.toObject<DeviceWeatherStateFirestore>()?.map()
 
-                // TODO: Remove !!
-                trySend(
-                    Result.Success(
-                        DeviceWeatherState(
-                            online = online ?: false,
-                            lastConnection = dateFormat,
-                            weather = state!!
-                        )
-                    )
-                )
-            } else {
-                trySend(Result.Failure(exception = error)).isFailure
+                    deviceWeatherState?.let {
+                        trySend(Result.Success(it)).isSuccess
+                    } ?: trySend(Result.Failure()).isFailure
+                } else {
+                    trySend(Result.Failure(exception = error)).isFailure
+                }
             }
+            awaitClose { listenerRegistration.remove() }
         }
-        awaitClose { listenerRegistration.remove() }
-    }
-
-    @OptIn(ExperimentalCoroutinesApi::class)
-    override fun getDeviceLastWeatherList(deviceId: String): Flow<Result<List<Weather>>> = callbackFlow {
-    }
 }
