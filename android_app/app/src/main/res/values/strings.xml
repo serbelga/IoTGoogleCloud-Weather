@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">IoT Weather Station</string>
     <string name="temperature">Temperature</string>
+    <string name="humidity">Humidity</string>
     <string name="device">Device</string>
     <string name="devices">Devices</string>
     <string name="select_device">Select device</string>
+    <string name="online">Connected</string>
+    <string name="offline">Offline</string>
+    <string name="last_update">Last update: %1$s</string>
 </resources>

@@ -16,12 +16,20 @@
 
 package com.example.sergiobelda.iot_cloud_weather.ui.theme
 
+import androidx.compose.material.Colors
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
 val orange300 = Color(0xFFFF8A65)
 val orange800 = Color(0xFFD84315)
+
+val red300 = Color(0xFFE57373)
+val red800 = Color(0xFFC62828)
+
+val teal200 = Color(0xFF80CBC4)
+val teal400 = Color(0xFF26A69A)
 
 val lightColors = lightColors(
     primary = orange800
@@ -31,3 +39,9 @@ val darkColors = darkColors(
     primary = orange300,
     onPrimary = Color.White
 )
+
+val Colors.offline: Color
+    @Composable get() = if (isLight) red800 else red300
+
+val Colors.online: Color
+    @Composable get() = if (isLight) teal400 else teal200
