@@ -21,6 +21,8 @@ import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.graphics.ExperimentalAnimationGraphicsApi
 import androidx.compose.animation.graphics.res.animatedVectorResource
+import androidx.compose.animation.graphics.res.rememberAnimatedVectorPainter
+import androidx.compose.animation.graphics.vector.AnimatedImageVector
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -94,7 +96,7 @@ fun IoTCloudWeatherApp() {
 )
 @Composable
 fun MainScreen(mainViewModel: MainViewModel = viewModel()) {
-    val image = animatedVectorResource(R.drawable.avd_menu_close)
+    val image = AnimatedImageVector.animatedVectorResource(R.drawable.avd_menu_close)
     val devicesResult by mainViewModel.devices.collectAsState()
     var selected by remember { mutableStateOf(0) }
     val scaffoldState = rememberBackdropScaffoldState(
@@ -121,7 +123,10 @@ fun MainScreen(mainViewModel: MainViewModel = viewModel()) {
                         }
                     ) {
                         Icon(
-                            painter = image.painterFor(atEnd = scaffoldState.isRevealed),
+                            painter = rememberAnimatedVectorPainter(
+                                image,
+                                atEnd = scaffoldState.isRevealed
+                            ),
                             contentDescription = "Menu"
                         )
                     }
