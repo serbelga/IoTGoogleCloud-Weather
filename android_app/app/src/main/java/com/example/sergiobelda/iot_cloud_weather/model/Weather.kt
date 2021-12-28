@@ -14,16 +14,22 @@
  * limitations under the License.
  */
 
-package com.example.sergiobelda.iot_cloud_weather.util
+package com.example.sergiobelda.iot_cloud_weather.model
 
-import kotlin.math.roundToInt
+import com.example.sergiobelda.iot_cloud_weather.util.FormatNumber.getFormatNumberString
+import java.io.Serializable
 
-object FormatNumber {
-    fun getFormatNumberString(number: Double): String {
-        return getFormatNumberDouble(number).toString()
-    }
+data class Weather(
+    var temperature: Double?,
+    var humidity: Double?
+) : Serializable {
+    fun getTemperatureString(): String =
+        temperature?.let {
+            "${getFormatNumberString(it)}°"
+        } ?: "-°"
 
-    fun getFormatNumberDouble(number: Double): Double {
-        return (number * 100.0).roundToInt() / 100.0
-    }
+    fun getHumidityString(): String =
+        humidity?.let {
+            "${getFormatNumberString(it)}%"
+        } ?: "-%"
 }

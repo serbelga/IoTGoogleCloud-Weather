@@ -14,21 +14,22 @@
  * limitations under the License.
  */
 
-package com.example.sergiobelda.iot_cloud_weather.repository
+package com.example.sergiobelda.iot_cloud_weather.viewmodel
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import com.example.sergiobelda.iot_cloud_weather.data.Result
-import com.example.sergiobelda.iot_cloud_weather.firestoredatasource.IFirestoreDataSource
-import com.example.sergiobelda.iot_cloud_weather.model.Device
 import com.example.sergiobelda.iot_cloud_weather.model.DeviceWeatherState
-import kotlinx.coroutines.flow.Flow
+import com.example.sergiobelda.iot_cloud_weather.repository.IWeatherRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class WeatherRepository(
-    private val firestoreDataSource: IFirestoreDataSource
-) : IWeatherRepository {
+@HiltViewModel
+class DeviceDetailViewModel @Inject constructor(
+    private val weatherRepository: IWeatherRepository
+) : ViewModel() {
 
-    override fun getDevices(): Flow<Result<List<Device>>> =
-        firestoreDataSource.getDevices()
-
-    override fun getDeviceWeatherState(deviceId: String): Flow<Result<DeviceWeatherState>> =
-        firestoreDataSource.getDeviceWeatherState(deviceId)
+    fun getDeviceWeatherState(deviceId: String): LiveData<Result<DeviceWeatherState>> =
+        weatherRepository.getDeviceWeatherState(deviceId).asLiveData()
 }

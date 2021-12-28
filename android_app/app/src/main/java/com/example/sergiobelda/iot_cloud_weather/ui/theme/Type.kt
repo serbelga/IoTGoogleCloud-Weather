@@ -14,16 +14,17 @@
  * limitations under the License.
  */
 
-package com.example.sergiobelda.iot_cloud_weather.util
+package com.example.sergiobelda.iot_cloud_weather.ui.theme
 
-import kotlin.math.roundToInt
+import androidx.compose.material.Typography
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import com.example.sergiobelda.iot_cloud_weather.R
 
-object FormatNumber {
-    fun getFormatNumberString(number: Double): String {
-        return getFormatNumberDouble(number).toString()
-    }
+val rubikFontFamily = FontFamily(
+    Font(R.font.rubik_medium, weight = FontWeight.Medium),
+    Font(R.font.rubik_regular, weight = FontWeight.Normal)
+)
 
-    fun getFormatNumberDouble(number: Double): Double {
-        return (number * 100.0).roundToInt() / 100.0
-    }
-}
+val typography = Typography(defaultFontFamily = rubikFontFamily)

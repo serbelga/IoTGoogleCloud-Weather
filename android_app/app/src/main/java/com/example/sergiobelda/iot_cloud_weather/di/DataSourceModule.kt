@@ -14,16 +14,22 @@
  * limitations under the License.
  */
 
-package com.example.sergiobelda.iot_cloud_weather.util
+package com.example.sergiobelda.iot_cloud_weather.di
 
-import kotlin.math.roundToInt
+import com.example.sergiobelda.iot_cloud_weather.firestoredatasource.FirestoreDataSource
+import com.example.sergiobelda.iot_cloud_weather.firestoredatasource.IFirestoreDataSource
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
-object FormatNumber {
-    fun getFormatNumberString(number: Double): String {
-        return getFormatNumberDouble(number).toString()
-    }
+@Module
+@InstallIn(SingletonComponent::class)
+object DataSourceModule {
 
-    fun getFormatNumberDouble(number: Double): Double {
-        return (number * 100.0).roundToInt() / 100.0
-    }
+    @Provides
+    @Singleton
+    fun provideFirestoreDataSource(): IFirestoreDataSource =
+        FirestoreDataSource()
 }

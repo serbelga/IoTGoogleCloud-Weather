@@ -14,16 +14,22 @@
  * limitations under the License.
  */
 
-package com.example.sergiobelda.iot_cloud_weather.util
+package com.example.sergiobelda.iot_cloud_weather.ui.theme
 
-import kotlin.math.roundToInt
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material.MaterialTheme
+import androidx.compose.runtime.Composable
 
-object FormatNumber {
-    fun getFormatNumberString(number: Double): String {
-        return getFormatNumberDouble(number).toString()
+@Composable
+fun IoTCloudWeatherTheme(content: @Composable () -> Unit) {
+    val colors = if (isSystemInDarkTheme()) {
+        darkColors
+    } else {
+        lightColors
     }
-
-    fun getFormatNumberDouble(number: Double): Double {
-        return (number * 100.0).roundToInt() / 100.0
-    }
+    MaterialTheme(
+        colors = colors,
+        typography = typography,
+        content = content
+    )
 }

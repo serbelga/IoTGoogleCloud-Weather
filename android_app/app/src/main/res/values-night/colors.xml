@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-
     <!-- Theme Attributes -->
-
-    <color name="colorPrimary">@color/amber200</color>
-    <color name="colorPrimaryDark">@color/amber200Dark</color>
+    <color name="colorPrimary">@color/primaryLight</color>
+    <color name="colorPrimaryDark">@color/primary</color>
+    <color name="colorSecondary">@color/secondaryLight</color>
     <color name="colorError">@color/red300</color>
     <color name="colorOk">@color/teal200</color>
-
-    <color name="borderColorOnSurface">#1FFFFFFF</color>
 </resources>

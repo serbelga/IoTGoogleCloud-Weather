@@ -14,21 +14,24 @@
  * limitations under the License.
  */
 
-package com.example.sergiobelda.iot_cloud_weather.repository
+package com.example.sergiobelda.iot_cloud_weather.di
 
-import com.example.sergiobelda.iot_cloud_weather.data.Result
 import com.example.sergiobelda.iot_cloud_weather.firestoredatasource.IFirestoreDataSource
-import com.example.sergiobelda.iot_cloud_weather.model.Device
-import com.example.sergiobelda.iot_cloud_weather.model.DeviceWeatherState
-import kotlinx.coroutines.flow.Flow
+import com.example.sergiobelda.iot_cloud_weather.repository.IWeatherRepository
+import com.example.sergiobelda.iot_cloud_weather.repository.WeatherRepository
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.android.scopes.ViewModelScoped
 
-class WeatherRepository(
-    private val firestoreDataSource: IFirestoreDataSource
-) : IWeatherRepository {
+@Module
+@InstallIn(ViewModelComponent::class)
+object RepositoryModule {
 
-    override fun getDevices(): Flow<Result<List<Device>>> =
-        firestoreDataSource.getDevices()
-
-    override fun getDeviceWeatherState(deviceId: String): Flow<Result<DeviceWeatherState>> =
-        firestoreDataSource.getDeviceWeatherState(deviceId)
+    @Provides
+    @ViewModelScoped
+    fun provideWeatherRepository(
+        firestoreDataSource: IFirestoreDataSource
+    ): IWeatherRepository = WeatherRepository(firestoreDataSource)
 }

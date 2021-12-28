@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-package com.example.sergiobelda.iot_cloud_weather.util
+package com.example.sergiobelda.iot_cloud_weather.firestoredatasource
 
-import kotlin.math.roundToInt
+import com.example.sergiobelda.iot_cloud_weather.data.Result
+import com.example.sergiobelda.iot_cloud_weather.model.Device
+import com.example.sergiobelda.iot_cloud_weather.model.DeviceWeatherState
+import kotlinx.coroutines.flow.Flow
 
-object FormatNumber {
-    fun getFormatNumberString(number: Double): String {
-        return getFormatNumberDouble(number).toString()
-    }
+interface IFirestoreDataSource {
 
-    fun getFormatNumberDouble(number: Double): Double {
-        return (number * 100.0).roundToInt() / 100.0
-    }
+    fun getDevices(): Flow<Result<List<Device>>>
+
+    fun getDeviceWeatherState(deviceId: String): Flow<Result<DeviceWeatherState>>
 }
