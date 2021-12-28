@@ -2,19 +2,20 @@
 <resources>
     <!-- Theme Colors -->
     
-    <!-- Light -->
-
-    <color name="orange300">#FF8A65</color>
-    <color name="orange300Dark">#C75B39</color>
+    <!-- Primary -->
+    <color name="primary">#EC4539</color>
+    <color name="primaryLight">#FF7964</color>
+    <color name="primaryDark">#B20010</color>
 
     <!-- Dark -->
-
-    <color name="orange800">#D84315</color>
-    <color name="orange800Dark">#9F310F</color>
+    <color name="secondary">#EC9727</color>
+    <color name="secondaryLight">#FFC85A</color>
+    <color name="secondaryDark">#B46900</color>
 
     <!-- Theme Attributes -->
-    <color name="colorPrimary">@color/orange800</color>
-    <color name="colorPrimaryDark">@color/orange800Dark</color>
+    <color name="colorPrimary">@color/primary</color>
+    <color name="colorPrimaryDark">@color/primaryDark</color>
+    <color name="colorSecondary">@color/secondary</color>
     <color name="colorError">@color/red800</color>
     <color name="colorOk">@color/teal400</color>
 

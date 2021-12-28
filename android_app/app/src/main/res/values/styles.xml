@@ -3,6 +3,7 @@
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorError">?attr/colorError</item>
+        <item name="colorError">@color/colorError</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
     </style>
 </resources>

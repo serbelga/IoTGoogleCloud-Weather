@@ -22,8 +22,13 @@ import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
-val orange300 = Color(0xFFFF8A65)
-val orange800 = Color(0xFFD84315)
+val primary = Color(0xFFEC4539)
+val primaryLight = Color(0xFFFF7964)
+val primaryDark = Color(0xFFB20010)
+
+val secondary = Color(0xFFEC9727)
+val secondaryLight = Color(0xFFFFC85A)
+val secondaryDark = Color(0xFFB46900)
 
 val red300 = Color(0xFFE57373)
 val red800 = Color(0xFFC62828)
@@ -32,12 +37,14 @@ val teal200 = Color(0xFF80CBC4)
 val teal400 = Color(0xFF26A69A)
 
 val lightColors = lightColors(
-    primary = orange800
+    primary = primary,
+    secondary = secondary
 )
 
 val darkColors = darkColors(
-    primary = orange300,
-    onPrimary = Color.White
+    primary = primaryLight,
+    onPrimary = Color.White,
+    secondary = secondaryLight
 )
 
 val Colors.offline: Color
