@@ -44,11 +44,11 @@ Timer.set(50000, true, function() {
 
 ## Android App
 
-Developed using Firebase & Android Jetpack
-- Cloud Firestore
-- LiveData
-- DataBinding
+Developed using:
+- Firebase Cloud Firestore
+- Kotlin Coroutines, Flow and StateFlow
+- Dagger Hilt
 - ViewModel
 - Android KTX
-- MotionLayout
 - Material Design Components
+- Jetpack Compose UI
