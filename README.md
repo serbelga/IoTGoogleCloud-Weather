@@ -18,7 +18,7 @@ Example of a weather station using Google Cloud IoT Core, Firebase Cloud Functio
 
 ## Architecture
 
-<img src="./screenshots/architecture.svg?sanitize=true" width="820">
+<img src="./screenshots/architecture.png" width="820">
 
 ### Mongoose OS
 
