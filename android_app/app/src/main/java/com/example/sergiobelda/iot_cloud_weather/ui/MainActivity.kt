@@ -251,4 +251,3 @@ fun DeviceDetailView(deviceId: String, deviceDetailViewModel: DeviceDetailViewMo
     }?.doIfFailure {
     }
 }
-
