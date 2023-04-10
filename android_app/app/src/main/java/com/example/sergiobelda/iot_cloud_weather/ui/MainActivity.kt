@@ -104,6 +104,7 @@ fun MainScreen(mainViewModel: MainViewModel = viewModel()) {
     )
     val scope = rememberCoroutineScope()
     BackdropScaffold(
+        peekHeight = 60.dp,
         scaffoldState = scaffoldState,
         appBar = {
             TopAppBar(
