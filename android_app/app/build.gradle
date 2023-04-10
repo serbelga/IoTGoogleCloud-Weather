@@ -7,9 +7,10 @@ plugins {
 }
 
 android {
+    namespace = "dev.sergiobelda.iot.cloud.weather"
     compileSdkVersion 33
     defaultConfig {
-        applicationId "com.example.sergiobelda.iot_cloud_weather"
+        applicationId "dev.sergiobelda.iot.cloud.weather"
         minSdkVersion 24
         targetSdkVersion 33
         versionCode 1

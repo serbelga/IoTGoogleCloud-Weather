@@ -8,20 +8,12 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:72495779077:android:64bde72c0c43da75",
+        "mobilesdk_app_id": "1:72495779077:android:3cc7d3776d9ac09b7a3b6c",
         "android_client_info": {
-          "package_name": "com.example.sergiobelda.iot_cloud_weather"
+          "package_name": "dev.sergiobelda.iot.cloud.weather"
         }
       },
       "oauth_client": [
-        {
-          "client_id": "72495779077-d27vn5pngnhi3vdvvl80cs8kik3ei2mp.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.sergiobelda.iot_cloud_weather",
-            "certificate_hash": "583415512b0b42bd61f7ec17eb42de015766c1f0"
-          }
-        },
         {
           "client_id": "72495779077-ei12lgn3olksua46tma4e0a627ar6lo4.apps.googleusercontent.com",
           "client_type": 3
