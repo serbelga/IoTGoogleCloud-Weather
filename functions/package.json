@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "@google-cloud/pubsub": "^2.0.0",
-    "firebase-admin": "~9.0.0",
-    "firebase-functions": "^2.2.0",
+    "firebase-admin": "~11.4.0",
+    "firebase-functions": "^3.0.0",
     "semistandard": "^13.0.1"
   },
   "devDependencies": {
