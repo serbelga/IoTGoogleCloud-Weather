@@ -8,11 +8,11 @@ plugins {
 
 android {
     namespace = "dev.sergiobelda.iot.cloud.weather"
-    compileSdkVersion 33
+    compileSdkVersion 34
     defaultConfig {
         applicationId "dev.sergiobelda.iot.cloud.weather"
         minSdkVersion 24
-        targetSdkVersion 33
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
