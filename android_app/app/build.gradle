@@ -64,7 +64,7 @@ dependencies {
             attribute(Bundling.BUNDLING_ATTRIBUTE, getObjects().named(Bundling, Bundling.EXTERNAL))
         }
     }
-    implementation platform('androidx.compose:compose-bom:2023.04.00')
+    implementation platform('androidx.compose:compose-bom:2023.10.01')
     implementation "androidx.compose.foundation:foundation"
     implementation "androidx.compose.material:material"
     implementation "androidx.compose.runtime:runtime"
